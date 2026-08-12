@@ -12,6 +12,8 @@ type Analysis = {
 const globalRateLimit = globalThis as typeof globalThis & { bodyLensRequests?:Map<string,number[]> };
 const requests = globalRateLimit.bodyLensRequests ??= new Map<string,number[]>();
 
+const DEFAULT_DASHSCOPE_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1";
+
 function isValidAnalysis(value:unknown):value is Analysis {
   if (!value || typeof value!=="object") return false;
   const data=value as Partial<Analysis>;
@@ -72,13 +74,16 @@ Every muscle score must be an integer from 1 to 10.`;
 export async function POST(request: Request) {
   try {
     if(isRateLimited(request)) return NextResponse.json({error:"Daily request limit reached. Please try again tomorrow."},{status:429});
-    const apiKey = process.env.OPENAI_API_KEY;
+    const apiKey = process.env.DASHSCOPE_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
-        { error: "The AI service is not configured yet. Add OPENAI_API_KEY to the server environment." },
+        { error: "The AI service is not configured yet. Add DASHSCOPE_API_KEY to the server environment." },
         { status: 503 },
       );
     }
+
+    const baseUrl = (process.env.DASHSCOPE_BASE_URL || DEFAULT_DASHSCOPE_BASE_URL).replace(/\/$/, "");
+    const model = process.env.DASHSCOPE_MODEL || "qwen3-vl-flash";
 
     const form = await request.formData();
     const photo = form.get("photo");
@@ -104,14 +109,14 @@ export async function POST(request: Request) {
         ? `\nThe user selected ${sex} as the reference profile.`
         : "\nThe user skipped sex selection; do not infer it.";
 
-    const openAIResponse = await fetch("https://api.openai.com/v1/chat/completions", {
+    const dashScopeResponse = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "gpt-4o",
+        model,
         temperature: 0.3,
         max_tokens: 1000,
         response_format: { type: "json_object" },
@@ -121,24 +126,25 @@ export async function POST(request: Request) {
             role: "user",
             content: [
               { type: "text", text: PROMPT + profileContext },
-              { type: "image_url", image_url: { url: `data:${photo.type};base64,${base64Image}`, detail: "low" } },
+              { type: "image_url", image_url: { url: `data:${photo.type};base64,${base64Image}` } },
             ],
           },
         ],
       }),
     });
 
-    if (openAIResponse.status === 429) {
+    if (dashScopeResponse.status === 429) {
       return NextResponse.json(
         { error: "Demand is high right now. Please wait about 30 seconds and try again." },
         { status: 429 },
       );
     }
-    if (!openAIResponse.ok) throw new Error(`OpenAI request failed: ${openAIResponse.status}`);
-    const payload = await openAIResponse.json() as {choices?:Array<{message?:{content?:string}}>};
+    if (!dashScopeResponse.ok) throw new Error(`DashScope request failed: ${dashScopeResponse.status}`);
+    const payload = await dashScopeResponse.json() as {choices?:Array<{message?:{content?:string}}>};
     const responseText = payload.choices?.[0]?.message?.content;
-    if (!responseText) throw new Error("Missing OpenAI response");
-    const data:unknown=JSON.parse(responseText);
+    if (!responseText) throw new Error("Missing DashScope response");
+    const cleanJson=responseText.replace(/^```(?:json)?\s*/i,"").replace(/\s*```$/i,"").trim();
+    const data:unknown=JSON.parse(cleanJson);
     if(!isValidAnalysis(data)) throw new Error("Invalid analysis response");
     return NextResponse.json(data,{headers:{"Cache-Control":"no-store","X-Content-Type-Options":"nosniff"}});
   } catch (error) {

@@ -15,7 +15,7 @@ const faqs = [
   ["How accurate is AI body fat estimation?", "AI photo analysis is best used as a directional estimate, not a diagnosis. Your result includes a confidence range because lighting, pose, clothing and photo angle all affect visual estimates."],
   ["AI body fat calculator vs DEXA scan?", "DEXA is a clinical measurement and remains the more precise option. Our calculator is a fast, accessible way to get a baseline and track visual progress between formal measurements."],
   ["How do I take the best photo?", "Stand relaxed against a plain background in even lighting. Keep your full body in frame, face the camera, and wear fitted clothing. Avoid flexing, filters and dramatic shadows."],
-  ["Is it really free?", "Yes. You can run up to three complimentary scans per day with no account required. Your photo is used only for the analysis and is not saved to a public gallery."],
+  ["Is it really free?", "Yes. You can run up to three complimentary scans per day with no account required. Your photo is sent to our AI processor only for the requested analysis and is not stored by BodyLens."],
 ] as const;
 
 export default function Home() {
@@ -152,7 +152,7 @@ export default function Home() {
           <div className="sex-picker"><span>Reference profile</span><div>{(["male","female","skip"] as const).map(option=><button type="button" aria-pressed={sex===option} className={sex===option?"active":""} key={option} onClick={()=>setSex(option)}>{option[0].toUpperCase()+option.slice(1)}</button>)}</div></div>
           <div className="photo-tips"><span>For best results:</span><b>Full body</b><b>Even lighting</b><b>Relaxed pose</b></div>
           <button className="analyze-button" onClick={analyze} disabled={loading}>{loading ? <><i className="spinner" /> Analyzing body composition…</> : <>Analyze my body fat <span>→</span></>}</button>
-          <p className="secure-note">🔒 Your photo stays private and is never shared</p>
+          <p className="secure-note">🔒 Processed privately for this analysis · Not stored by BodyLens</p>
           <div className="disclaimer"><strong>Educational estimate only.</strong> Visual analysis has a typical ±3–5% margin of error and is not a medical device.</div>
         </div>
         <div className="hero-orb orb-one"/><div className="hero-orb orb-two"/>
