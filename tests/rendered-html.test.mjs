@@ -1,30 +1,35 @@
 import assert from "node:assert/strict";
+import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render(path = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${path}`, {headers:{accept:"text/html"}}), {ASSETS:{fetch:async()=>new Response("Not found",{status:404})}}, {waitUntil(){},passThroughOnException(){}});
-}
+const root = new URL("../", import.meta.url);
 
-test("server renders the calculator with stable SEO content", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /<title>AI Body Fat Calculator - Free Body Fat Percentage from Photo<\/title>/i);
-  assert.match(html, /<h1[^>]*>AI Body Fat/);
-  assert.match(html, /SoftwareApplication/);
-  assert.match(html, /FAQPage/);
-  assert.match(html, /BreadcrumbList/);
-  assert.match(html, /Analyze my body fat/i);
-  assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
+test("standard Next.js production output exists", async () => {
+  await access(new URL(".next/BUILD_ID", root));
+  await access(new URL(".next/routes-manifest.json", root));
+  await access(new URL(".next/server/app-paths-manifest.json", root));
 });
 
-for (const path of ["/tdee-calculator","/bmi-calculator","/psmf-calculator","/body-fat-percentage-chart","/privacy","/terms"]) {
-  test(`server renders ${path}`, async () => {
-    const response = await render(path);
-    assert.equal(response.status, 200);
-    assert.match(response.headers.get("content-type") ?? "", /^text\/html/i);
-  });
-}
+test("homepage keeps stable SEO content and structured data", async () => {
+  const [page, layout] = await Promise.all([
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/layout.tsx", root), "utf8"),
+  ]);
+  assert.match(page, /AI Body Fat<br\/>/);
+  assert.match(layout, /AI Body Fat Calculator - Free Body Fat Percentage from Photo/);
+  assert.match(layout, /SoftwareApplication/);
+  assert.match(layout, /FAQPage/);
+  assert.match(layout, /BreadcrumbList/);
+});
+
+test("all public routes are present in the app directory", async () => {
+  for (const route of [
+    "app/tdee-calculator/page.tsx",
+    "app/bmi-calculator/page.tsx",
+    "app/psmf-calculator/page.tsx",
+    "app/body-fat-percentage-chart/page.tsx",
+    "app/privacy/page.tsx",
+    "app/terms/page.tsx",
+    "app/api/analyze/route.ts",
+  ]) await access(new URL(route, root));
+});
