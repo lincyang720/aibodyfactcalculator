@@ -85,6 +85,14 @@ export async function POST(request: Request) {
     const baseUrl = (process.env.DASHSCOPE_BASE_URL || DEFAULT_DASHSCOPE_BASE_URL).replace(/\/$/, "");
     const model = process.env.DASHSCOPE_MODEL || "qwen3-vl-flash";
 
+    const contentType = request.headers.get("content-type") || "";
+    if (!contentType.toLowerCase().includes("multipart/form-data")) {
+      return NextResponse.json(
+        { error: "Please upload a full-body photo of a person" },
+        { status: 400 },
+      );
+    }
+
     const form = await request.formData();
     const photo = form.get("photo");
     const sex = form.get("sex");
