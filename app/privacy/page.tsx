@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import "../tool-pages.css";
+
+export const metadata:Metadata={title:"Privacy Policy | AI Body Fat Calculator",robots:{index:true,follow:true}};
+
+export default function Privacy(){return <div className="tool-page"><header className="tool-nav"><a href="/">BF · BodyLens</a></header><main className="tool-main legal-page"><div className="tool-eyebrow">LAST UPDATED AUGUST 2, 2026</div><h1>Privacy Policy</h1><p className="tool-lede">We designed BodyLens to analyze your photo without building a photo library.</p><h2>Photo processing</h2><p>Your uploaded image is sent to OpenAI solely to generate the requested analysis. The application does not write your photo to its own database or persistent file storage.</p><h2>Device data</h2><p>Your browser stores only the date and number of free analyses used to enforce the three-per-day device limit. You can remove this data through your browser settings.</p><h2>Third-party processing</h2><p>OpenAI processes the image and prompt to provide the analysis API service. Its handling is governed by the terms and privacy controls applying to the configured OpenAI API account.</p><h2>Contact</h2><p>Questions may be sent to hello@aibodyfatcalculator.com.</p><a className="back-cta" href="/">Return to calculator</a></main></div>}
