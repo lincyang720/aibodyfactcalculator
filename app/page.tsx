@@ -18,6 +18,10 @@ const faqs = [
   ["Is it really free?", "Yes. You can run up to three complimentary scans per day with no account required. Your photo is sent to our AI processor only for the requested analysis and is not stored by BodyLens."],
 ] as const;
 
+const softwareSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"AI Body Fat Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",description:"Free AI body fat calculator. Upload a photo to estimate body fat percentage.",offers:{"@type":"Offer",price:"0",priceCurrency:"USD"},isAccessibleForFree:true};
+const faqSchema={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))};
+const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:"https://aibodyfatcalculator.com/"},{"@type":"ListItem",position:2,name:"AI Body Fat Calculator",item:"https://aibodyfatcalculator.com/"}]};
+
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -108,7 +112,7 @@ export default function Home() {
       <header className="site-header">
         <a className="brand" href="#top" aria-label="AI Body Fat Calculator home"><span className="brand-mark">BF</span><span>Body<span>Lens</span></span></a>
         <nav aria-label="Main navigation">
-          <a href="#top">Home</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a><a href="#faq">FAQ</a>
+          <a href="#top">Home</a><a href="/army-body-fat-calculator">Army Calculator</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a><a href="#faq">FAQ</a>
         </nav>
         <a className="header-cta" href="#analyzer">Try it free <span>→</span></a>
       </header>
@@ -179,9 +183,10 @@ export default function Home() {
 
       <section className="faq" id="faq"><div><div className="section-kicker">QUESTIONS, ANSWERED</div><h2>The honest answers.</h2><p>Body composition is nuanced. Here is what to know before you scan.</p></div><div className="faq-list">{faqs.map(([q,a], i) => <details key={q} open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></section>
 
-      <section className="tools" id="tools"><div><div className="section-kicker">KEEP GOING</div><h2>Related free tools</h2></div><div className="tool-links"><a href="/tdee-calculator"><span>Daily energy needs</span><strong>TDEE Calculator</strong><i>→</i></a><a href="/bmi-calculator"><span>Healthy weight range</span><strong>BMI Calculator</strong><i>→</i></a><a href="/body-fat-percentage-chart"><span>Visual reference guide</span><strong>Body Fat Chart</strong><i>→</i></a><a href="/psmf-calculator"><span>Rapid fat loss protocol</span><strong>PSMF Calculator</strong><i>→</i></a></div></section>
+      <section className="tools" id="tools"><div><div className="section-kicker">KEEP GOING</div><h2>Related free tools</h2></div><div className="tool-links"><a href="/army-body-fat-calculator"><span>Updated July 2026 standard</span><strong>Army Body Fat Calculator</strong><i>→</i></a><a href="/tdee-calculator"><span>Daily energy needs</span><strong>TDEE Calculator</strong><i>→</i></a><a href="/bmi-calculator"><span>Healthy weight range</span><strong>BMI Calculator</strong><i>→</i></a><a href="/body-fat-percentage-chart"><span>Visual reference guide</span><strong>Body Fat Chart</strong><i>→</i></a><a href="/psmf-calculator"><span>Rapid fat loss protocol</span><strong>PSMF Calculator</strong><i>→</i></a></div></section>
 
       <footer><div className="brand footer-brand"><span className="brand-mark">BF</span><span>Body<span>Lens</span></span></div><p>Clearer data. Smarter progress.</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="mailto:hello@aibodyfatcalculator.com">Contact</a></div><small>© 2026 AI Body Fat Calculator. Results are estimates and not medical advice.</small></footer>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(softwareSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema)}}/>
     </main>
   );
 }

@@ -17,9 +17,22 @@ test("homepage keeps stable SEO content and structured data", async () => {
   ]);
   assert.match(page, /AI Body Fat<br\/>/);
   assert.match(layout, /AI Body Fat Calculator - Free Body Fat Percentage from Photo/);
-  assert.match(layout, /SoftwareApplication/);
-  assert.match(layout, /FAQPage/);
-  assert.match(layout, /BreadcrumbList/);
+  assert.match(page, /SoftwareApplication/);
+  assert.match(page, /FAQPage/);
+  assert.match(page, /BreadcrumbList/);
+});
+
+test("Army calculator uses the current 2026 WHtR rule", async () => {
+  const [page, calculator] = await Promise.all([
+    readFile(new URL("app/army-body-fat-calculator/page.tsx", root), "utf8"),
+    readFile(new URL("app/army-body-fat-calculator/ArmyCalculator.tsx", root), "utf8"),
+  ]);
+  assert.match(page, /Army Directive 2026-13/);
+  assert.match(page, /below 0\.550/);
+  assert.match(page, /FAQPage/);
+  assert.match(page, /BreadcrumbList/);
+  assert.match(calculator, /Math\.trunc\(value \* 1000\) \/ 1000/);
+  assert.match(calculator, /recorded<0\.55/);
 });
 
 test("all public routes are present in the app directory", async () => {
@@ -28,6 +41,7 @@ test("all public routes are present in the app directory", async () => {
     "app/bmi-calculator/page.tsx",
     "app/psmf-calculator/page.tsx",
     "app/body-fat-percentage-chart/page.tsx",
+    "app/army-body-fat-calculator/page.tsx",
     "app/privacy/page.tsx",
     "app/terms/page.tsx",
     "app/api/analyze/route.ts",
