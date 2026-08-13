@@ -119,10 +119,6 @@ export default function Home() {
           <h1>AI Body Fat<br/><em>Calculator</em></h1>
           <p className="hero-lede">Turn one photo into a clear body composition estimate, muscle assessment, and a practical plan built around you.</p>
           <div className="trust-row"><span>✓ Free to try</span><span>✓ No signup</span><span>✓ Private by design</span></div>
-          <div className="social-proof">
-            <div className="avatar-stack"><i>J</i><i>M</i><i>A</i><i>R</i></div>
-            <p><strong>12,400+ analyses</strong><br/><span>completed this month</span></p>
-          </div>
         </div>
 
         <div className="analyzer-card" id="analyzer">
