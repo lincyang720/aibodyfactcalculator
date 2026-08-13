@@ -35,6 +35,19 @@ test("Army calculator uses the current 2026 WHtR rule", async () => {
   assert.match(calculator, /recorded<0\.55/);
 });
 
+test("FFMI calculator includes normalized formula and page schema", async () => {
+  const [page, calculator] = await Promise.all([
+    readFile(new URL("app/ffmi-calculator/page.tsx", root), "utf8"),
+    readFile(new URL("app/ffmi-calculator/FfmiCalculator.tsx", root), "utf8"),
+  ]);
+  assert.match(page, /FFMI Calculator - Fat Free Mass Index \(Normalized\)/);
+  assert.match(page, /FAQPage/);
+  assert.match(page, /SoftwareApplication/);
+  assert.match(calculator, /leanMassKg\/\(heightM\*\*2\)/);
+  assert.match(calculator, /ffmi\+6\.3\*\(1\.8-heightM\)/);
+  assert.doesNotMatch(page, /proof of performance-enhancing drug use/i);
+});
+
 test("all public routes are present in the app directory", async () => {
   for (const route of [
     "app/tdee-calculator/page.tsx",
@@ -42,6 +55,7 @@ test("all public routes are present in the app directory", async () => {
     "app/psmf-calculator/page.tsx",
     "app/body-fat-percentage-chart/page.tsx",
     "app/army-body-fat-calculator/page.tsx",
+    "app/ffmi-calculator/page.tsx",
     "app/privacy/page.tsx",
     "app/terms/page.tsx",
     "app/api/analyze/route.ts",
