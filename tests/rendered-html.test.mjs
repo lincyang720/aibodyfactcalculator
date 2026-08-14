@@ -17,6 +17,12 @@ test("homepage keeps stable SEO content and structured data", async () => {
   ]);
   assert.match(page, /AI Body Fat<br\/>/);
   assert.match(layout, /AI Body Fat Calculator - Free Body Fat Percentage from Photo/);
+  assert.match(layout, /applicationName: "BodyLens"/);
+  assert.match(layout, /siteName:"BodyLens"/);
+  assert.match(layout, /"@type":"Organization"/);
+  assert.match(layout, /"@type":"WebSite"/);
+  assert.match(page, /name:"BodyLens AI Body Fat Calculator"/);
+  assert.match(page, /publisher:\{"@id":"https:\/\/aibodyfatcalculator\.com\/#organization"\}/);
   assert.match(page, /SoftwareApplication/);
   assert.match(page, /FAQPage/);
   assert.match(page, /BreadcrumbList/);

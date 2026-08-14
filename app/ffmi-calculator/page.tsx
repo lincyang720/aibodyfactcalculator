@@ -4,7 +4,7 @@ import "../tool-pages.css";
 import "./ffmi.css";
 
 const canonical="https://aibodyfatcalculator.com/ffmi-calculator";
-export const metadata:Metadata={title:"FFMI Calculator - Fat Free Mass Index (Normalized)",description:"Free FFMI calculator: measure your fat free mass index from height, weight and body fat %. Includes normalized FFMI and interpretation charts for men and women.",alternates:{canonical},openGraph:{title:"FFMI Calculator - Fat Free Mass Index (Normalized)",description:"Calculate fat-free mass, FFMI, normalized FFMI, and interpret the result responsibly.",url:canonical,type:"website"}};
+export const metadata:Metadata={title:"FFMI Calculator - Fat Free Mass Index (Normalized)",description:"Free FFMI calculator: measure your fat free mass index from height, weight and body fat %. Includes normalized FFMI and interpretation charts for men and women.",alternates:{canonical},openGraph:{title:"FFMI Calculator - Fat Free Mass Index (Normalized)",description:"Calculate fat-free mass, FFMI, normalized FFMI, and interpret the result responsibly.",url:canonical,siteName:"BodyLens",type:"website"}};
 
 const faqs=[
   ["What is a good FFMI score?","FFMI varies by sex, age, population, sport, and body-fat measurement method. In common fitness references, values around 21–23 for men are often described as excellent, but no single range applies to everyone."],
@@ -15,7 +15,7 @@ const faqs=[
 const menRows=[["17–18","10–18%","Lower muscularity"],["18–20","20–27%","Typical range"],["19–21","25–40%","Higher fat mass"],["20–21","10–18%","Athletic / intermediate"],["22–23","6–12%","Advanced muscularity"],["24–25","8–20%","Very high muscularity"]];
 const womenRows=[["14–15","20–25%","Lower muscularity"],["14–17","22–35%","Typical range"],["15–18","30–45%","Higher fat mass"],["16–17","18–25%","Athletic / intermediate"],["18–20","15–22%","Advanced muscularity"],["19–21","15–30%","Very high muscularity"]];
 const faqSchema={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([q,a])=>({"@type":"Question",name:q,acceptedAnswer:{"@type":"Answer",text:a}}))};
-const appSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"FFMI Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:canonical,isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}};
+const appSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"BodyLens FFMI Calculator",alternateName:"FFMI Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:canonical,brand:{"@type":"Brand",name:"BodyLens"},publisher:{"@id":"https://aibodyfatcalculator.com/#organization"},isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}};
 const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:"https://aibodyfatcalculator.com/"},{"@type":"ListItem",position:2,name:"FFMI Calculator",item:canonical}]};
 
 export default function FfmiPage(){return <div className="tool-page"><header className="tool-nav"><a href="/">BF · BodyLens</a><div><a href="/ffmi-calculator">FFMI</a><a href="/army-body-fat-calculator">Army</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a></div></header><main className="tool-main ffmi-page">

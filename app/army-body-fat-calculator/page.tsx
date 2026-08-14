@@ -9,7 +9,7 @@ export const metadata:Metadata={
   title:"Army Body Fat Calculator — 2026 WHtR Standard",
   description:"Free Army body fat calculator updated for Army Directive 2026-13. Calculate waist-to-height ratio and check the current 0.550 Army standard.",
   alternates:{canonical},
-  openGraph:{title:"Army Body Fat Calculator — Updated 2026 WHtR Test",description:"Calculate your Army waist-to-height ratio and check the current 0.550 standard.",url:canonical,type:"website"},
+  openGraph:{title:"Army Body Fat Calculator — Updated 2026 WHtR Test",description:"Calculate your Army waist-to-height ratio and check the current 0.550 standard.",url:canonical,siteName:"BodyLens",type:"website"},
 };
 
 const faqs=[
@@ -20,7 +20,7 @@ const faqs=[
 ] as const;
 
 const faqSchema={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))};
-const appSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"Army Body Fat Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:canonical,isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}};
+const appSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"BodyLens Army Body Fat Calculator",alternateName:"Army Body Fat Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:canonical,brand:{"@type":"Brand",name:"BodyLens"},publisher:{"@id":"https://aibodyfatcalculator.com/#organization"},isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}};
 const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:"https://aibodyfatcalculator.com/"},{"@type":"ListItem",position:2,name:"Army Body Fat Calculator",item:canonical}]};
 
 export default function ArmyBodyFatCalculatorPage(){return <div className="tool-page">
