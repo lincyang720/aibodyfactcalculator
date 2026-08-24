@@ -11,5 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {url:`${base}/body-fat-percentage-chart`,lastModified:new Date(),changeFrequency:"monthly",priority:.8},
     {url:`${base}/privacy`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
     {url:`${base}/terms`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
+    {url:`${base}/disclaimer`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
+    {url:`${base}/contact`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
   ];
 }
