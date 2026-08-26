@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import ArmyCalculator from "./ArmyCalculator";
 import "../tool-pages.css";
 import "./army.css";
+import { buildPageMetadata } from "../site-metadata";
 
 const canonical="https://aibodyfatcalculator.com/army-body-fat-calculator";
 
-export const metadata:Metadata={
+export const metadata:Metadata=buildPageMetadata({
   title:"Army Body Fat Calculator — 2026 WHtR Standard",
   description:"Free Army body fat calculator updated for Army Directive 2026-13. Calculate waist-to-height ratio and check the current 0.550 Army standard.",
-  alternates:{canonical},
-  openGraph:{title:"Army Body Fat Calculator — Updated 2026 WHtR Test",description:"Calculate your Army waist-to-height ratio and check the current 0.550 standard.",url:canonical,siteName:"BodyLens",type:"website"},
-};
+  path:"/army-body-fat-calculator",
+});
 
 const faqs=[
   ["What is the current Army body composition standard?","Army Directive 2026-13 uses waist-to-height ratio as the sole body composition assessment. A recorded WHtR below 0.550 meets the standard."],

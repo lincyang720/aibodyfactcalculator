@@ -11,21 +11,54 @@ test("standard Next.js production output exists", async () => {
 });
 
 test("homepage keeps stable SEO content and structured data", async () => {
-  const [page, layout] = await Promise.all([
+  const [page, layout, helper] = await Promise.all([
     readFile(new URL("app/page.tsx", root), "utf8"),
     readFile(new URL("app/layout.tsx", root), "utf8"),
+    readFile(new URL("app/site-metadata.ts", root), "utf8"),
   ]);
-  assert.match(page, /AI Body Fat<br\/>/);
-  assert.match(layout, /AI Body Fat Calculator - Free Body Fat Percentage from Photo/);
-  assert.match(layout, /applicationName: "BodyLens"/);
-  assert.match(layout, /siteName:"BodyLens"/);
+  assert.match(page, /AI Body Fat<br\/><em>Progress Tracker<\/em>/);
+  assert.match(layout, /AI Body Fat Calculator & Physique Progress Tracker \| BodyLens/);
+  assert.match(layout, /applicationName: SITE_NAME/);
+  assert.match(helper, /siteName: SITE_NAME/);
   assert.match(layout, /"@type":"Organization"/);
   assert.match(layout, /"@type":"WebSite"/);
-  assert.match(page, /name:"BodyLens AI Body Fat Calculator"/);
+  assert.match(page, /name:"BodyLens AI Physique Progress Tracker"/);
   assert.match(page, /publisher:\{"@id":"https:\/\/aibodyfatcalculator\.com\/#organization"\}/);
   assert.match(page, /SoftwareApplication/);
   assert.match(page, /FAQPage/);
   assert.match(page, /BreadcrumbList/);
+});
+
+test("every calculator route has route-specific metadata", async () => {
+  const [helper, bmi, tdee, psmf, chart] = await Promise.all([
+    readFile(new URL("app/site-metadata.ts", root), "utf8"),
+    readFile(new URL("app/bmi-calculator/layout.tsx", root), "utf8"),
+    readFile(new URL("app/tdee-calculator/layout.tsx", root), "utf8"),
+    readFile(new URL("app/psmf-calculator/layout.tsx", root), "utf8"),
+    readFile(new URL("app/body-fat-percentage-chart/page.tsx", root), "utf8"),
+  ]);
+  assert.match(helper, /alternates: \{ canonical \}/);
+  assert.match(helper, /openGraph:/);
+  assert.match(helper, /twitter:/);
+  assert.match(bmi, /path: "\/bmi-calculator"/);
+  assert.match(tdee, /path: "\/tdee-calculator"/);
+  assert.match(psmf, /path: "\/psmf-calculator"/);
+  assert.match(chart, /path:"\/body-fat-percentage-chart"/);
+});
+
+test("progress tracking is honest and privacy-preserving", async () => {
+  const [home, progress, privacy, sitemap] = await Promise.all([
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/progress-tracker/page.tsx", root), "utf8"),
+    readFile(new URL("app/privacy/page.tsx", root), "utf8"),
+    readFile(new URL("app/sitemap.ts", root), "utf8"),
+  ]);
+  assert.match(home, /bodylens-baseline/);
+  assert.match(home, /Your photo is not saved/);
+  assert.match(progress, /IN DEVELOPMENT/);
+  assert.match(progress, /This plan is not charging yet/);
+  assert.match(privacy, /numeric analysis result and date in your browser/);
+  assert.match(sitemap, /progress-tracker/);
 });
 
 test("Army calculator uses the current 2026 WHtR rule", async () => {
@@ -46,7 +79,7 @@ test("FFMI calculator includes normalized formula and page schema", async () => 
     readFile(new URL("app/ffmi-calculator/page.tsx", root), "utf8"),
     readFile(new URL("app/ffmi-calculator/FfmiCalculator.tsx", root), "utf8"),
   ]);
-  assert.match(page, /FFMI Calculator - Fat Free Mass Index \(Normalized\)/);
+  assert.match(page, /FFMI Calculator — Fat Free Mass Index \(Normalized\) \| BodyLens/);
   assert.match(page, /FAQPage/);
   assert.match(page, /SoftwareApplication/);
   assert.match(calculator, /leanMassKg\/\(heightM\*\*2\)/);
@@ -64,6 +97,7 @@ test("all public routes are present in the app directory", async () => {
     "app/ffmi-calculator/page.tsx",
     "app/privacy/page.tsx",
     "app/terms/page.tsx",
+    "app/progress-tracker/page.tsx",
     "app/api/analyze/route.ts",
   ]) await access(new URL(route, root));
 });

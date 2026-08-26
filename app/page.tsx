@@ -11,6 +11,15 @@ type AnalysisResult = {
   summary: string;
 };
 
+type SavedBaseline = Pick<AnalysisResult, "bodyFatPercentage" | "confidenceRange" | "muscleAssessment"> & {
+  savedAt: string;
+};
+
+function trackEvent(event: string, details: Record<string, string | number | boolean> = {}) {
+  const dataLayer = (window as Window & { dataLayer?: Array<Record<string, unknown>> }).dataLayer;
+  dataLayer?.push({ event, ...details });
+}
+
 const faqs = [
   ["How accurate is AI body fat estimation?", "AI photo analysis is best used as a directional estimate, not a diagnosis. Your result includes a confidence range because lighting, pose, clothing and photo angle all affect visual estimates."],
   ["AI body fat calculator vs DEXA scan?", "DEXA is a clinical measurement and remains the more precise option. Our calculator is a fast, accessible way to get a baseline and track visual progress between formal measurements."],
@@ -18,7 +27,7 @@ const faqs = [
   ["Is it really free?", "Yes. You can run up to three complimentary scans per day with no account required. Your photo is sent to our AI processor only for the requested analysis and is not stored by BodyLens."],
 ] as const;
 
-const softwareSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"BodyLens AI Body Fat Calculator",alternateName:"AI Body Fat Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:"https://aibodyfatcalculator.com/",description:"Free AI body fat calculator. Upload a photo to estimate body fat percentage.",brand:{"@type":"Brand",name:"BodyLens"},publisher:{"@id":"https://aibodyfatcalculator.com/#organization"},offers:{"@type":"Offer",price:"0",priceCurrency:"USD"},isAccessibleForFree:true};
+const softwareSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"BodyLens AI Physique Progress Tracker",alternateName:["AI Body Fat Calculator","BodyLens"],applicationCategory:"HealthApplication",operatingSystem:"Web",url:"https://aibodyfatcalculator.com/",description:"Estimate body fat from a photo, assess muscle balance, and create a baseline for tracking physique progress.",brand:{"@type":"Brand",name:"BodyLens"},publisher:{"@id":"https://aibodyfatcalculator.com/#organization"},offers:{"@type":"Offer",price:"0",priceCurrency:"USD"},isAccessibleForFree:true};
 const faqSchema={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))};
 const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:"https://aibodyfatcalculator.com/"},{"@type":"ListItem",position:2,name:"AI Body Fat Calculator",item:"https://aibodyfatcalculator.com/"}]};
 
@@ -32,12 +41,16 @@ export default function Home() {
   const [error, setError] = useState("");
   const [sex, setSex] = useState<"male"|"female"|"skip">("male");
   const [scansLeft, setScansLeft] = useState(3);
+  const [baseline, setBaseline] = useState<SavedBaseline | null>(null);
+  const [baselineSaved, setBaselineSaved] = useState(false);
 
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
     const saved = JSON.parse(localStorage.getItem("bodylens-scans") || "null") as {date:string;count:number} | null;
+    const savedBaseline = JSON.parse(localStorage.getItem("bodylens-baseline") || "null") as SavedBaseline | null;
     const update = window.setTimeout(() => setScansLeft(saved?.date === today ? Math.max(0, 3 - saved.count) : 3), 0);
-    return () => window.clearTimeout(update);
+    const loadBaseline = window.setTimeout(() => setBaseline(savedBaseline), 0);
+    return () => { window.clearTimeout(update); window.clearTimeout(loadBaseline); };
   }, []);
 
   function chooseFile(next?: File) {
@@ -55,6 +68,8 @@ export default function Home() {
     setFile(next);
     setPreview(URL.createObjectURL(next));
     setResult(null);
+    setBaselineSaved(false);
+    trackEvent("photo_selected", { file_type: next.type, file_size_kb: Math.round(next.size / 1024) });
   }
 
   function onDrop(event: DragEvent<HTMLDivElement>) {
@@ -75,6 +90,7 @@ export default function Home() {
     }
     setLoading(true);
     setError("");
+    trackEvent("analysis_started", { reference_profile: sex });
     const form = new FormData();
     form.append("photo", file);
     form.append("sex", sex);
@@ -85,6 +101,7 @@ export default function Home() {
       const data = await response.json() as AnalysisResult & { error?:string };
       if (!response.ok) throw new Error(data.error || "Please try again with a clearer photo");
       setResult(data);
+      trackEvent("analysis_completed", { reference_profile: sex });
       const today = new Date().toISOString().slice(0, 10);
       const nextLeft = Math.max(0, scansLeft - 1);
       setScansLeft(nextLeft);
@@ -107,27 +124,41 @@ export default function Home() {
     inputRef.current?.click();
   }
 
+  function saveBaseline() {
+    if (!result) return;
+    const nextBaseline: SavedBaseline = {
+      bodyFatPercentage: result.bodyFatPercentage,
+      confidenceRange: result.confidenceRange,
+      muscleAssessment: result.muscleAssessment,
+      savedAt: new Date().toISOString(),
+    };
+    localStorage.setItem("bodylens-baseline", JSON.stringify(nextBaseline));
+    setBaseline(nextBaseline);
+    setBaselineSaved(true);
+    trackEvent("baseline_saved", { body_fat_estimate: result.bodyFatPercentage });
+  }
+
   return (
     <main>
       <header className="site-header">
         <a className="brand" href="#top" aria-label="AI Body Fat Calculator home"><span className="brand-mark">BF</span><span>Body<span>Lens</span></span></a>
         <nav aria-label="Main navigation">
-          <a href="#top">Home</a><a href="/ffmi-calculator">FFMI</a><a href="/army-body-fat-calculator">Army</a><a href="/tdee-calculator">TDEE</a><a href="#faq">FAQ</a>
+          <a href="#top">Home</a><a href="/progress-tracker">Progress</a><a href="/ffmi-calculator">FFMI</a><a href="/army-body-fat-calculator">Army</a><a href="#faq">FAQ</a>
         </nav>
         <a className="header-cta" href="#analyzer">Try it free <span>→</span></a>
       </header>
 
       <section className="hero" id="top">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="pulse-dot" /> AI-powered body composition</div>
-          <h1>AI Body Fat<br/><em>Calculator</em></h1>
-          <p className="hero-lede">Turn one photo into a clear body composition estimate, muscle assessment, and a practical plan built around you.</p>
+          <div className="eyebrow"><span className="pulse-dot" /> AI-powered physique progress</div>
+          <h1>AI Body Fat<br/><em>Progress Tracker</em></h1>
+          <p className="hero-lede">Turn one photo into a directional body composition estimate, muscle assessment, and a baseline you can use to track what changes next.</p>
           <div className="trust-row"><span>✓ Free to try</span><span>✓ No signup</span><span>✓ Private by design</span></div>
         </div>
 
         <div className="analyzer-card" id="analyzer">
           <div className="card-heading"><div><span className="step-label">STEP 01</span><h2>Add a full-body photo</h2></div><span className="privacy-badge">Private</span></div>
-          <div className="free-strip"><b>FREE</b><span>No signup</span><span>±3–5% margin</span><span>{scansLeft} scans left today</span></div>
+          <div className="free-strip"><b>FREE</b><span>No signup</span><span>Directional estimate</span><span>{scansLeft} scans left today</span></div>
           <div
             className={`dropzone ${dragging ? "is-dragging" : ""} ${preview ? "has-preview" : ""}`}
             onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
@@ -152,8 +183,8 @@ export default function Home() {
           <div className="sex-picker"><span>Reference profile</span><div>{(["male","female","skip"] as const).map(option=><button type="button" aria-pressed={sex===option} className={sex===option?"active":""} key={option} onClick={()=>setSex(option)}>{option[0].toUpperCase()+option.slice(1)}</button>)}</div></div>
           <div className="photo-tips"><span>For best results:</span><b>Full body</b><b>Even lighting</b><b>Relaxed pose</b></div>
           <button className="analyze-button" onClick={analyze} disabled={loading}>{loading ? <><i className="spinner" /> Analyzing body composition…</> : <>Analyze my body fat <span>→</span></>}</button>
-          <p className="secure-note">🔒 Processed privately for this analysis · Not stored by BodyLens</p>
-          <div className="disclaimer"><strong>Educational estimate only.</strong> Visual analysis has a typical ±3–5% margin of error and is not a medical device.</div>
+          <p className="secure-note">🔒 Processed by Alibaba Cloud in Beijing · Not stored by BodyLens</p>
+          <div className="disclaimer"><strong>Educational estimate only.</strong> Individual error can be larger, and results vary with lighting, pose, clothing, camera angle, and model behavior. This is not a medical device.</div>
         </div>
         <div className="hero-orb orb-one"/><div className="hero-orb orb-two"/>
       </section>
@@ -170,20 +201,24 @@ export default function Home() {
           <article className="muscle-card"><div className="result-title"><span>02</span><h3>Muscle group assessment</h3></div><div className="muscle-list">{Object.entries(result.muscleAssessment).map(([key, score]) => <div className="muscle" key={key}><span>{key === "abs" ? "Abs & Core" : key[0].toUpperCase()+key.slice(1)}</span><div><i style={{width:`${score * 10}%`}}/></div><b>{score}<small>/10</small></b></div>)}</div></article>
           <article className="plan-card"><div className="result-title"><span>03</span><h3>Your action plan</h3></div><div className="plan-list"><div><span>Daily target</span><strong>{result.actionPlan.dailyCalories.toLocaleString()} <small>kcal</small></strong></div><div><span>Protein</span><strong>{result.actionPlan.proteinGrams} <small>g/day</small></strong></div><div><span>Cardio</span><strong>{result.actionPlan.cardioRecommendation}</strong></div><div><span>Timeline</span><strong>~{result.actionPlan.estimatedWeeksToTarget} <small>weeks</small></strong></div></div><p>{result.summary} {result.actionPlan.strengthRecommendation}</p></article>
         </div>
+        <div className="progress-conversion">
+          <div className="progress-copy"><span>PROGRESS MODE</span><h3>{baseline ? "Compare with your saved baseline" : "Make this your starting point"}</h3><p>{baseline ? `Your current estimate is ${(result.bodyFatPercentage-baseline.bodyFatPercentage)>0?"+":""}${(result.bodyFatPercentage-baseline.bodyFatPercentage).toFixed(1)} points from the baseline saved ${new Date(baseline.savedAt).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}. Treat small changes cautiously and compare photos under the same conditions.` : "Save the numeric result on this device, then return under the same lighting and pose to compare trends. Your photo is not saved."}</p></div>
+          <div className="progress-actions"><button onClick={saveBaseline}>{baselineSaved ? "Baseline saved ✓" : baseline ? "Replace saved baseline" : "Save this baseline"}</button><a href="/progress-tracker" onClick={()=>trackEvent("progress_interest_clicked",{source:"analysis_result"})}>Explore progress tracking →</a></div>
+        </div>
         <div className="result-actions"><button onClick={() => navigator.clipboard?.writeText(`My estimated body fat is ${result.bodyFatPercentage}% — analyzed with BodyLens.`)}>Share results</button><a className="result-link-button" href={`/ffmi-calculator?bodyFat=${result.bodyFatPercentage}`}>Use this result in FFMI calculator</a><button className="secondary" onClick={reset}>Analyze another photo</button></div>
       </section>}
 
       <section className="how"><div className="section-kicker">HOW IT WORKS</div><h2>From photo to <em>forward plan.</em></h2><p className="section-intro">No calipers. No complicated measurements. Just a simple, honest starting point.</p><div className="steps"><article><span>01</span><div className="step-icon">↥</div><h3>Upload your photo</h3><p>Use a clear, front-facing full-body photo in natural light.</p></article><article><span>02</span><div className="step-icon">✣</div><h3>AI reads the signals</h3><p>We assess definition, proportion, and visible fat distribution.</p></article><article><span>03</span><div className="step-icon">⌁</div><h3>Get your roadmap</h3><p>See your range, muscle scores, calories, protein, and training focus.</p></article></div></section>
 
-      <section className="benefits"><div className="benefit-copy"><div className="section-kicker light">MORE THAN A NUMBER</div><h2>Know where you are.<br/><em>Know what to do next.</em></h2><p>A body fat estimate only matters if it changes what you do tomorrow. BodyLens translates your result into focused, achievable next steps.</p><a href="#analyzer">Start your free analysis →</a></div><div className="benefit-cards"><article><span>01</span><h3>Body fat range</h3><p>A realistic estimate with confidence bounds—not false precision.</p></article><article><span>02</span><h3>Muscle balance</h3><p>Visual scoring across six major muscle groups highlights strengths and gaps.</p></article><article><span>03</span><h3>Personal action plan</h3><p>Calorie, protein, cardio, and strength targets that make the next step obvious.</p></article></div></section>
+      <section className="benefits"><div className="benefit-copy"><div className="section-kicker light">MORE THAN A NUMBER</div><h2>See what changed.<br/><em>Know what to do next.</em></h2><p>A body fat estimate matters most as a consistent baseline. BodyLens connects your range, muscle balance, and next actions so future check-ins have context.</p><a href="/progress-tracker">See progress tracking →</a></div><div className="benefit-cards"><article><span>01</span><h3>Body fat range</h3><p>A directional estimate with confidence bounds—not false precision.</p></article><article><span>02</span><h3>Muscle balance</h3><p>Visual scoring across six major muscle groups highlights strengths and gaps.</p></article><article><span>03</span><h3>Repeatable progress</h3><p>Save a numeric baseline, repeat under similar conditions, and focus on the trend rather than one scan.</p></article></div></section>
 
       <section className="reference-section"><div className="reference-head"><div className="section-kicker">UNDERSTAND YOUR RESULT</div><h2>Body fat reference ranges</h2><p>Common ACE-style categories provide context. Individual health and performance can vary within every range.</p></div><div className="range-table" role="table" aria-label="Body fat percentage reference ranges"><div className="table-row head" role="row"><span>Category</span><b>Men</b><b>Women</b></div>{[["Essential fat","2–5%","10–13%"],["Athletes","6–13%","14–20%"],["Fitness","14–17%","21–24%"],["Average","18–24%","25–31%"],["Higher range","25%+","32%+"]].map(row=><div className="table-row" role="row" key={row[0]}><span>{row[0]}</span><b>{row[1]}</b><b>{row[2]}</b></div>)}</div></section>
 
-      <section className="comparison"><div className="section-kicker light">CHOOSE THE RIGHT MEASURE</div><h2>Fast estimate or clinical precision?</h2><div className="compare-grid"><article><span>AI PHOTO</span><h3>Instant & accessible</h3><strong>±3–5%</strong><p>Best for quick baselines and consistent progress check-ins at home.</p></article><article><span>SKINFOLD CALIPERS</span><h3>Technique dependent</h3><strong>±3–5%</strong><p>Useful when the same trained person measures the same sites each time.</p></article><article><span>DEXA SCAN</span><h3>Clinical benchmark</h3><strong>±1–2%</strong><p>Best when you need a detailed professional body-composition measurement.</p></article></div></section>
+      <section className="comparison"><div className="section-kicker light">CHOOSE THE RIGHT MEASURE</div><h2>Fast direction or clinical detail?</h2><div className="compare-grid"><article><span>AI PHOTO</span><h3>Instant & accessible</h3><strong>Directional</strong><p>Best for a quick baseline and repeated visual check-ins under consistent photo conditions. Individual error can be larger.</p></article><article><span>SKINFOLD CALIPERS</span><h3>Technique dependent</h3><strong>Repeatable</strong><p>Useful when the same trained person measures the same sites with a consistent protocol.</p></article><article><span>DEXA SCAN</span><h3>Clinical detail</h3><strong>High precision</strong><p>Useful for detailed professional body-composition assessment, while still subject to device, protocol, and between-method differences.</p></article></div></section>
 
       <section className="faq" id="faq"><div><div className="section-kicker">QUESTIONS, ANSWERED</div><h2>The honest answers.</h2><p>Body composition is nuanced. Here is what to know before you scan.</p></div><div className="faq-list">{faqs.map(([q,a], i) => <details key={q} open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></section>
 
-      <section className="tools" id="tools"><div><div className="section-kicker">KEEP GOING</div><h2>Related free tools</h2></div><div className="tool-links"><a href="/ffmi-calculator"><span>Fat-free mass index</span><strong>FFMI Calculator</strong><i>→</i></a><a href="/army-body-fat-calculator"><span>Updated July 2026 standard</span><strong>Army Body Fat Calculator</strong><i>→</i></a><a href="/tdee-calculator"><span>Daily energy needs</span><strong>TDEE Calculator</strong><i>→</i></a><a href="/bmi-calculator"><span>Healthy weight range</span><strong>BMI Calculator</strong><i>→</i></a><a href="/body-fat-percentage-chart"><span>Visual reference guide</span><strong>Body Fat Chart</strong><i>→</i></a><a href="/psmf-calculator"><span>Rapid fat loss protocol</span><strong>PSMF Calculator</strong><i>→</i></a></div></section>
+      <section className="tools" id="tools"><div><div className="section-kicker">KEEP GOING</div><h2>Progress & free tools</h2></div><div className="tool-links"><a href="/progress-tracker"><span>Repeatable photo check-ins</span><strong>Physique Progress Tracker</strong><i>→</i></a><a href="/ffmi-calculator"><span>Fat-free mass index</span><strong>FFMI Calculator</strong><i>→</i></a><a href="/army-body-fat-calculator"><span>Updated July 2026 standard</span><strong>Army Body Fat Calculator</strong><i>→</i></a><a href="/tdee-calculator"><span>Daily energy needs</span><strong>TDEE Calculator</strong><i>→</i></a><a href="/bmi-calculator"><span>Healthy weight range</span><strong>BMI Calculator</strong><i>→</i></a><a href="/body-fat-percentage-chart"><span>Visual reference guide</span><strong>Body Fat Chart</strong><i>→</i></a><a href="/psmf-calculator"><span>Rapid fat loss protocol</span><strong>PSMF Calculator</strong><i>→</i></a></div></section>
 
       <footer><div className="brand footer-brand"><span className="brand-mark">BF</span><span>Body<span>Lens</span></span></div><p>Clearer data. Smarter progress.</p><div><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/disclaimer">Disclaimer</a><a href="/contact">Contact</a></div><small>© 2026 BodyLens. Results are estimates and not medical advice.</small></footer>
       <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(softwareSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqSchema)}}/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(breadcrumbSchema)}}/>

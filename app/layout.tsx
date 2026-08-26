@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./extras.css";
+import { buildPageMetadata, SITE_NAME, SITE_ORIGIN } from "./site-metadata";
 
 export const metadata: Metadata = {
-  title: "AI Body Fat Calculator - Free Body Fat Percentage from Photo",
-  applicationName: "BodyLens",
-  description: "Free AI body fat calculator. Upload a photo to get your body fat percentage, muscle group assessment, and personalized action plan. No signup, no calipers needed.",
-  alternates: { canonical: "https://aibodyfatcalculator.com/" },
+  ...buildPageMetadata({
+    title: "AI Body Fat Calculator & Physique Progress Tracker | BodyLens",
+    description: "Estimate body fat from a photo, assess muscle balance, and create a baseline for tracking physique progress. Free first analysis, no signup required.",
+  }),
+  metadataBase: new URL(SITE_ORIGIN),
+  applicationName: SITE_NAME,
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-  openGraph:{title:"AI Body Fat Calculator - Free Body Fat Percentage from Photo",description:"Upload a photo, get your body fat percentage + muscle assessment + action plan. Free, no signup.",url:"https://aibodyfatcalculator.com/",siteName:"BodyLens",type:"website"},
-  twitter:{card:"summary_large_image",title:"AI Body Fat Calculator - Free Body Fat Percentage from Photo",description:"Upload a photo, get your body fat percentage + muscle assessment + action plan. Free."},
 };
 
 export default function RootLayout({children}:{children:React.ReactNode}) {

@@ -2,9 +2,10 @@ import type {Metadata} from "next";
 import FfmiCalculator from "./FfmiCalculator";
 import "../tool-pages.css";
 import "./ffmi.css";
+import { buildPageMetadata } from "../site-metadata";
 
 const canonical="https://aibodyfatcalculator.com/ffmi-calculator";
-export const metadata:Metadata={title:"FFMI Calculator - Fat Free Mass Index (Normalized)",description:"Free FFMI calculator: measure your fat free mass index from height, weight and body fat %. Includes normalized FFMI and interpretation charts for men and women.",alternates:{canonical},openGraph:{title:"FFMI Calculator - Fat Free Mass Index (Normalized)",description:"Calculate fat-free mass, FFMI, normalized FFMI, and interpret the result responsibly.",url:canonical,siteName:"BodyLens",type:"website"}};
+export const metadata:Metadata=buildPageMetadata({title:"FFMI Calculator — Fat Free Mass Index (Normalized) | BodyLens",description:"Calculate fat-free mass, standard FFMI, and normalized FFMI from height, weight, and body fat percentage, with responsible interpretation ranges.",path:"/ffmi-calculator"});
 
 const faqs=[
   ["What is a good FFMI score?","FFMI varies by sex, age, population, sport, and body-fat measurement method. In common fitness references, values around 21–23 for men are often described as excellent, but no single range applies to everyone."],
