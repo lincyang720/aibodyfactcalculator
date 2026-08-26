@@ -89,6 +89,12 @@ test("FFMI calculator includes normalized formula and page schema", async () => 
 
 test("all public routes are present in the app directory", async () => {
   for (const route of [
+    "app/body-fat-calculator-from-photo/page.tsx",
+    "app/body-fat-estimate-pictures/page.tsx",
+    "app/male-body-fat-percentage-pictures/page.tsx",
+    "app/female-body-fat-percentage-pictures/page.tsx",
+    "app/progress-photo-tracker/page.tsx",
+    "app/bulk-or-cut-calculator-from-photo/page.tsx",
     "app/tdee-calculator/page.tsx",
     "app/bmi-calculator/page.tsx",
     "app/psmf-calculator/page.tsx",
@@ -100,4 +106,21 @@ test("all public routes are present in the app directory", async () => {
     "app/progress-tracker/page.tsx",
     "app/api/analyze/route.ts",
   ]) await access(new URL(route, root));
+});
+
+test("long-tail pages target photo and progress search intent", async () => {
+  const [template, home, sitemap, photo, bulk] = await Promise.all([
+    readFile(new URL("app/long-tail-page.tsx", root), "utf8"),
+    readFile(new URL("app/page.tsx", root), "utf8"),
+    readFile(new URL("app/sitemap.ts", root), "utf8"),
+    readFile(new URL("app/body-fat-calculator-from-photo/page.tsx", root), "utf8"),
+    readFile(new URL("app/bulk-or-cut-calculator-from-photo/page.tsx", root), "utf8"),
+  ]);
+  assert.match(template, /FAQPage/);
+  assert.match(template, /Common searches this helps with/);
+  assert.match(home, /body-fat-calculator-from-photo/);
+  assert.match(home, /bulk-or-cut-calculator-from-photo/);
+  assert.match(sitemap, /progress-photo-tracker/);
+  assert.match(photo, /body fat calculator from photo/);
+  assert.match(bulk, /should I bulk or cut picture/);
 });
