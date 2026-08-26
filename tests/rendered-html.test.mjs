@@ -104,8 +104,20 @@ test("all public routes are present in the app directory", async () => {
     "app/privacy/page.tsx",
     "app/terms/page.tsx",
     "app/progress-tracker/page.tsx",
+    "app/llms.txt/route.ts",
     "app/api/analyze/route.ts",
   ]) await access(new URL(route, root));
+});
+
+test("discovery files expose sitemap and AI-readable site context", async () => {
+  const [robots, llms] = await Promise.all([
+    readFile(new URL("app/robots.ts", root), "utf8"),
+    readFile(new URL("app/llms.txt/route.ts", root), "utf8"),
+  ]);
+  assert.match(robots, /sitemap:"https:\/\/aibodyfatcalculator\.com\/sitemap\.xml"/);
+  assert.match(llms, /BodyLens is an AI body fat calculator and physique progress tracker/);
+  assert.match(llms, /https:\/\/aibodyfatcalculator\.com\/bulk-or-cut-calculator-from-photo/);
+  assert.match(llms, /not a medical device/);
 });
 
 test("long-tail pages target photo and progress search intent", async () => {
