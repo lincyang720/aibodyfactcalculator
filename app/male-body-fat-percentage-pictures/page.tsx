@@ -7,7 +7,7 @@ const page: LongTailPage = {
   slug: "male-body-fat-percentage-pictures",
   eyebrow: "MEN'S VISUAL GUIDE",
   title: "Male Body Fat Percentage Pictures",
-  lede: "Estimate a men's body fat range from visible physique markers, then use BodyLens to create a repeatable photo baseline.",
+  lede: "Estimate a men's body fat range from visible physique markers, then use AI Body Fat Calculator to create a repeatable photo baseline.",
   promise: "Men comparing cutting, maintenance, or recomposition progress who need a visual range before choosing the next nutrition phase.",
   steps: [
     { title: "Look beyond abs", body: "Ab visibility matters, but waist shape, chest definition, shoulder separation, and leg definition also influence the visual range." },
@@ -33,7 +33,7 @@ const page: LongTailPage = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Male Body Fat Percentage Pictures | BodyLens",
+  title: "Male Body Fat Percentage Pictures | AI Body Fat Calculator",
   description: page.lede,
   path: `/${page.slug}`,
 });

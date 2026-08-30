@@ -20,11 +20,11 @@ const faqs=[
 ] as const;
 
 const faqSchema={"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))};
-const appSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"BodyLens Army Body Fat Calculator",alternateName:"Army Body Fat Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:canonical,brand:{"@type":"Brand",name:"BodyLens"},publisher:{"@id":"https://aibodyfatcalculator.com/#organization"},isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}};
+const appSchema={"@context":"https://schema.org","@type":"SoftwareApplication",name:"AI Body Fat Calculator Army Body Fat Calculator",alternateName:"Army Body Fat Calculator",applicationCategory:"HealthApplication",operatingSystem:"Web",url:canonical,brand:{"@type":"Brand",name:"AI Body Fat Calculator"},publisher:{"@id":"https://aibodyfatcalculator.com/#organization"},isAccessibleForFree:true,offers:{"@type":"Offer",price:"0",priceCurrency:"USD"}};
 const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList",itemListElement:[{"@type":"ListItem",position:1,name:"Home",item:"https://aibodyfatcalculator.com/"},{"@type":"ListItem",position:2,name:"Army Body Fat Calculator",item:canonical}]};
 
 export default function ArmyBodyFatCalculatorPage(){return <div className="tool-page">
-  <header className="tool-nav"><a href="/">BF · BodyLens</a><div><a href="/army-body-fat-calculator">Army</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a><a href="/body-fat-percentage-chart">Body Fat Chart</a></div></header>
+  <header className="tool-nav"><a href="/">BF · AI Body Fat Calculator</a><div><a href="/army-body-fat-calculator">Army</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a><a href="/body-fat-percentage-chart">Body Fat Chart</a></div></header>
   <main className="tool-main army-page">
     <div className="tool-eyebrow">UPDATED FOR ARMY DIRECTIVE 2026-13</div>
     <h1>Army Body Fat Calculator</h1>

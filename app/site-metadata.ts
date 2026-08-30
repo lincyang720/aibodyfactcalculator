@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const SITE_ORIGIN = "https://aibodyfatcalculator.com";
-export const SITE_NAME = "BodyLens";
+export const SITE_NAME = "AI Body Fat Calculator";
 
 type PageMetadata = {
   title: string;
@@ -34,7 +34,7 @@ export function buildPageMetadata({
         url: `${SITE_ORIGIN}/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "BodyLens AI body fat calculator and physique progress tracker",
+        alt: "AI Body Fat Calculator body composition and physique progress tracker",
       }],
     },
     twitter: {

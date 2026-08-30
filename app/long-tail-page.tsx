@@ -21,7 +21,7 @@ export function buildLongTailSchema(page: LongTailPage) {
       name: page.title,
       description: page.lede,
       url,
-      isPartOf: { "@type": "WebSite", name: "BodyLens", url: SITE_ORIGIN },
+      isPartOf: { "@type": "WebSite", name: "AI Body Fat Calculator", url: SITE_ORIGIN },
       about: ["body fat estimate", "physique progress", "fitness photos"],
     },
     {
@@ -40,7 +40,7 @@ export function LongTailLanding({ page }: { page: LongTailPage }) {
   return (
     <div className="tool-page">
       <header className="tool-nav">
-        <a href="/">BF · BodyLens</a>
+        <a href="/">BF · AI Body Fat Calculator</a>
         <div>
           <a href="/progress-tracker">Progress</a>
           <a href="/body-fat-calculator-from-photo">Photo Estimate</a>

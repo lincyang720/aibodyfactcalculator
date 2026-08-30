@@ -33,7 +33,7 @@ const page: LongTailPage = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Female Body Fat Percentage Pictures | BodyLens",
+  title: "Female Body Fat Percentage Pictures | AI Body Fat Calculator",
   description: page.lede,
   path: `/${page.slug}`,
 });

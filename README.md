@@ -1,6 +1,6 @@
-# BodyLens
+# AI Body Fat Calculator
 
-BodyLens powers [aibodyfatcalculator.com](https://aibodyfatcalculator.com/): a privacy-conscious AI body-fat photo estimator and early physique progress tracker built with Next.js.
+AI Body Fat Calculator powers [aibodyfatcalculator.com](https://aibodyfatcalculator.com/): a privacy-conscious AI body-fat photo estimator and early physique progress tracker built with Next.js.
 
 ## Product shape
 
@@ -10,7 +10,7 @@ BodyLens powers [aibodyfatcalculator.com](https://aibodyfatcalculator.com/): a p
 - Dedicated Army WHtR, FFMI, TDEE, BMI, PSMF, and body-fat reference tools
 - Progress-tracker interest test for guided repeat scans and photo comparisons
 
-BodyLens is an educational fitness tool, not a medical device.
+AI Body Fat Calculator is an educational fitness tool, not a medical device.
 
 ## Local setup
 

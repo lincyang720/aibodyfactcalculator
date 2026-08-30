@@ -7,7 +7,7 @@ import "./progress.css";
 const canonical = "https://aibodyfatcalculator.com/progress-tracker";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "AI Physique Progress Tracker from Photos | BodyLens",
+  title: "AI Physique Progress Tracker from Photos | AI Body Fat Calculator",
   description: "Create a body composition baseline from a photo, repeat under consistent conditions, and track changes in body fat range and muscle balance over time.",
   path: "/progress-tracker",
 });
@@ -15,21 +15,21 @@ export const metadata: Metadata = buildPageMetadata({
 const appSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "BodyLens AI Physique Progress Tracker",
+  name: "AI Physique Progress Tracker",
   applicationCategory: "HealthApplication",
   operatingSystem: "Web",
   url: canonical,
-  brand: { "@type": "Brand", name: "BodyLens" },
+  brand: { "@type": "Brand", name: "AI Body Fat Calculator" },
   publisher: { "@id": "https://aibodyfatcalculator.com/#organization" },
 };
 
 export default function ProgressTrackerPage() {
   return <div className="tool-page">
-    <header className="tool-nav"><a href="/">BF · BodyLens</a><div><a href="/">Photo analysis</a><a href="/ffmi-calculator">FFMI</a><a href="/body-fat-percentage-chart">Body fat chart</a></div></header>
+    <header className="tool-nav"><a href="/">BF · AI Body Fat Calculator</a><div><a href="/">Photo analysis</a><a href="/ffmi-calculator">FFMI</a><a href="/body-fat-percentage-chart">Body fat chart</a></div></header>
     <main className="tool-main progress-page">
       <div className="tool-eyebrow">BODYLENS PROGRESS MODE</div>
       <h1>AI Physique Progress Tracker</h1>
-      <p className="tool-lede">A single estimate is a snapshot. BodyLens is becoming a repeatable photo check-in that helps you see what changed and decide what to do next.</p>
+      <p className="tool-lede">A single estimate is a snapshot. AI Body Fat Calculator is becoming a repeatable photo check-in that helps you see what changed and decide what to do next.</p>
 
       <section className="progress-status">
         <div><span>AVAILABLE NOW</span><h2>Save a private numeric baseline</h2><p>Run the free photo analysis, then save the estimated range, muscle scores, and date in your browser. The photo is not included in the saved baseline.</p><a href="/#analyzer">Create my free baseline →</a></div>
@@ -42,7 +42,7 @@ export default function ProgressTrackerPage() {
 
       <section className="founding-offer"><div><span>FOUNDING PLAN — INTEREST TEST</span><h2>$39/year</h2><p>Unlimited check-ins, aligned photo comparisons, trend history, and weekly progress reports. This plan is not charging yet; requesting access records genuine interest and starts an email conversation.</p></div><InterestCta /></section>
 
-      <p className="progress-disclaimer">BodyLens provides directional fitness estimates, not medical measurements. Small changes may reflect lighting, pose, clothing, hydration, camera angle, or model behavior.</p>
+      <p className="progress-disclaimer">AI Body Fat Calculator provides directional fitness estimates, not medical measurements. Small changes may reflect lighting, pose, clothing, hydration, camera angle, or model behavior.</p>
       <a className="back-cta" href="/#analyzer">Start with a free analysis →</a>
     </main>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(appSchema)}}/>

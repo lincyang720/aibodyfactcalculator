@@ -8,7 +8,7 @@ export default function InterestCta() {
 
   return <a
     className="progress-primary-cta"
-    href="mailto:hello@aibodyfatcalculator.com?subject=BodyLens%20Founding%20Access&body=I%20am%20interested%20in%20the%20%2439%2Fyear%20BodyLens%20founding%20plan."
+    href="mailto:hello@aibodyfatcalculator.com?subject=AI Body Fat Calculator%20Founding%20Access&body=I%20am%20interested%20in%20the%20%2439%2Fyear%20AI Body Fat Calculator%20founding%20plan."
     onClick={recordInterest}
   >Request founding access →</a>;
 }

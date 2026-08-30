@@ -17,12 +17,12 @@ test("homepage keeps stable SEO content and structured data", async () => {
     readFile(new URL("app/site-metadata.ts", root), "utf8"),
   ]);
   assert.match(page, /AI Body Fat<br\/><em>Progress Tracker<\/em>/);
-  assert.match(layout, /AI Body Fat Calculator & Physique Progress Tracker \| BodyLens/);
+  assert.match(layout, /AI Body Fat Calculator & Physique Progress Tracker \| AI Body Fat Calculator/);
   assert.match(layout, /applicationName: SITE_NAME/);
   assert.match(helper, /siteName: SITE_NAME/);
   assert.match(layout, /"@type":"Organization"/);
   assert.match(layout, /"@type":"WebSite"/);
-  assert.match(page, /name:"BodyLens AI Physique Progress Tracker"/);
+  assert.match(page, /name:"AI Body Fat Calculator"/);
   assert.match(page, /publisher:\{"@id":"https:\/\/aibodyfatcalculator\.com\/#organization"\}/);
   assert.match(page, /SoftwareApplication/);
   assert.match(page, /FAQPage/);
@@ -53,7 +53,7 @@ test("progress tracking is honest and privacy-preserving", async () => {
     readFile(new URL("app/privacy/page.tsx", root), "utf8"),
     readFile(new URL("app/sitemap.ts", root), "utf8"),
   ]);
-  assert.match(home, /bodylens-baseline/);
+  assert.match(home, /aibodyfatcalculator-baseline/);
   assert.match(home, /Your photo is not saved/);
   assert.match(progress, /IN DEVELOPMENT/);
   assert.match(progress, /This plan is not charging yet/);
@@ -79,7 +79,7 @@ test("FFMI calculator includes normalized formula and page schema", async () => 
     readFile(new URL("app/ffmi-calculator/page.tsx", root), "utf8"),
     readFile(new URL("app/ffmi-calculator/FfmiCalculator.tsx", root), "utf8"),
   ]);
-  assert.match(page, /FFMI Calculator — Fat Free Mass Index \(Normalized\) \| BodyLens/);
+  assert.match(page, /FFMI Calculator — Fat Free Mass Index \(Normalized\) \| AI Body Fat Calculator/);
   assert.match(page, /FAQPage/);
   assert.match(page, /SoftwareApplication/);
   assert.match(calculator, /leanMassKg\/\(heightM\*\*2\)/);
@@ -101,6 +101,11 @@ test("all public routes are present in the app directory", async () => {
     "app/body-fat-percentage-chart/page.tsx",
     "app/army-body-fat-calculator/page.tsx",
     "app/ffmi-calculator/page.tsx",
+    "app/how-to-measure-body-fat-at-home/page.tsx",
+    "app/ffmi-vs-bmi/page.tsx",
+    "app/body-fat-percentage-chart-men-women-age/page.tsx",
+    "app/army-body-fat-standards-2026/page.tsx",
+    "app/signs-body-fat-percentage-too-high/page.tsx",
     "app/privacy/page.tsx",
     "app/terms/page.tsx",
     "app/progress-tracker/page.tsx",
@@ -115,8 +120,9 @@ test("discovery files expose sitemap and AI-readable site context", async () => 
     readFile(new URL("app/llms.txt/route.ts", root), "utf8"),
   ]);
   assert.match(robots, /sitemap:"https:\/\/aibodyfatcalculator\.com\/sitemap\.xml"/);
-  assert.match(llms, /BodyLens is an AI body fat calculator and physique progress tracker/);
+  assert.match(llms, /AI Body Fat Calculator is a body composition calculator and physique progress tracker/);
   assert.match(llms, /https:\/\/aibodyfatcalculator\.com\/bulk-or-cut-calculator-from-photo/);
+  assert.match(llms, /https:\/\/aibodyfatcalculator\.com\/ffmi-vs-bmi/);
   assert.match(llms, /not a medical device/);
 });
 
@@ -135,4 +141,21 @@ test("long-tail pages target photo and progress search intent", async () => {
   assert.match(sitemap, /progress-photo-tracker/);
   assert.match(photo, /body fat calculator from photo/);
   assert.match(bulk, /should I bulk or cut picture/);
+});
+
+test("guide content pages expose FAQ and source-backed topics", async () => {
+  const [homeGuide, ffmiGuide, ageChart, armyStandards, highBodyFat, sitemap] = await Promise.all([
+    readFile(new URL("app/how-to-measure-body-fat-at-home/page.tsx", root), "utf8"),
+    readFile(new URL("app/ffmi-vs-bmi/page.tsx", root), "utf8"),
+    readFile(new URL("app/body-fat-percentage-chart-men-women-age/page.tsx", root), "utf8"),
+    readFile(new URL("app/army-body-fat-standards-2026/page.tsx", root), "utf8"),
+    readFile(new URL("app/signs-body-fat-percentage-too-high/page.tsx", root), "utf8"),
+    readFile(new URL("app/sitemap.ts", root), "utf8"),
+  ]);
+  assert.match(homeGuide, /How to Measure Body Fat at Home/);
+  assert.match(ffmiGuide, /Kouri et al\. 1995/);
+  assert.match(ageChart, /Body Fat Percentage Chart for Men and Women by Age/);
+  assert.match(armyStandards, /less than 0\.55/);
+  assert.match(highBodyFat, /Talk to a qualified healthcare professional/);
+  assert.match(sitemap, /signs-body-fat-percentage-too-high/);
 });

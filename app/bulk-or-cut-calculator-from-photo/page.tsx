@@ -33,7 +33,7 @@ const page: LongTailPage = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Bulk or Cut Calculator From Photo | BodyLens",
+  title: "Bulk or Cut Calculator From Photo | AI Body Fat Calculator",
   description: page.lede,
   path: `/${page.slug}`,
 });

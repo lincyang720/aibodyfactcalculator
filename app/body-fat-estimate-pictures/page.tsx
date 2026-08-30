@@ -33,7 +33,7 @@ const page: LongTailPage = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Body Fat Estimate Pictures & Visual Guide | BodyLens",
+  title: "Body Fat Estimate Pictures & Visual Guide | AI Body Fat Calculator",
   description: page.lede,
   path: `/${page.slug}`,
 });

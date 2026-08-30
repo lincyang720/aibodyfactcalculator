@@ -34,4 +34,4 @@ export default function BmiPage() {
 }
 
 function Field({label,children}:{label:string;children:React.ReactNode}){return <label className="field"><span>{label}</span>{children}</label>}
-function Nav(){return <header className="tool-nav"><a href="/">BF · BodyLens</a><div><a href="/progress-tracker">Progress</a><a href="/tdee-calculator">TDEE</a><a href="/ffmi-calculator">FFMI</a><a href="/body-fat-percentage-chart">Body Fat Chart</a></div></header>}
+function Nav(){return <header className="tool-nav"><a href="/">BF · AI Body Fat Calculator</a><div><a href="/progress-tracker">Progress</a><a href="/tdee-calculator">TDEE</a><a href="/ffmi-calculator">FFMI</a><a href="/body-fat-percentage-chart">Body Fat Chart</a></div></header>}

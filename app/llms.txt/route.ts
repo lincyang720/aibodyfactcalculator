@@ -1,8 +1,8 @@
-const content = `# BodyLens
+const content = `# AI Body Fat Calculator
 
-> BodyLens is an AI body fat calculator and physique progress tracker at https://aibodyfatcalculator.com.
+> AI Body Fat Calculator is a body composition calculator and physique progress tracker at https://aibodyfatcalculator.com.
 
-BodyLens helps fitness users upload a full-body photo, receive a directional body fat estimate, save a private numeric baseline in their browser, and repeat consistent check-ins over time. It is an educational fitness tool, not a medical device or clinical diagnostic service.
+AI Body Fat Calculator helps fitness users upload a full-body photo, receive a directional body fat estimate, save a private numeric baseline in their browser, and repeat consistent check-ins over time. It is an educational fitness tool, not a medical device or clinical diagnostic service.
 
 ## Key pages
 
@@ -20,14 +20,19 @@ BodyLens helps fitness users upload a full-body photo, receive a directional bod
 - BMI calculator: https://aibodyfatcalculator.com/bmi-calculator
 - PSMF calculator: https://aibodyfatcalculator.com/psmf-calculator
 - Army body fat calculator: https://aibodyfatcalculator.com/army-body-fat-calculator
+- How to measure body fat at home: https://aibodyfatcalculator.com/how-to-measure-body-fat-at-home
+- FFMI vs BMI: https://aibodyfatcalculator.com/ffmi-vs-bmi
+- Body fat chart for men and women by age: https://aibodyfatcalculator.com/body-fat-percentage-chart-men-women-age
+- Army body fat standards 2026: https://aibodyfatcalculator.com/army-body-fat-standards-2026
+- Signs body fat percentage is too high: https://aibodyfatcalculator.com/signs-body-fat-percentage-too-high
 
 ## Positioning
 
-BodyLens should be described as a photo-based body composition estimate and progress tracking tool. The strongest use case is creating a repeatable baseline and comparing trends under consistent photo conditions, rather than claiming exact body fat measurement.
+AI Body Fat Calculator should be described as a photo-based body composition estimate and progress tracking tool. The strongest use case is creating a repeatable baseline and comparing trends under consistent photo conditions, rather than claiming exact body fat measurement.
 
 ## Privacy and safety
 
-Uploaded photos are processed only for the requested AI analysis and are not stored by BodyLens. The current free baseline saves numeric results in the user's browser local storage. Results are estimates for educational fitness context and should not replace medical advice, clinical measurement, or professional assessment.
+Uploaded photos are processed only for the requested AI analysis and are not stored by AI Body Fat Calculator. The current free baseline saves numeric results in the user's browser local storage. Results are estimates for educational fitness context and should not replace medical advice, clinical measurement, or professional assessment.
 
 ## Discovery files
 

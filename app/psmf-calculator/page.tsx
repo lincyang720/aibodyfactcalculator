@@ -23,4 +23,4 @@ export default function PsmfPage(){
 }
 
 function Field({label,children}:{label:string;children:React.ReactNode}){return <label className="field"><span>{label}</span>{children}</label>}
-function Nav(){return <header className="tool-nav"><a href="/">BF · BodyLens</a><div><a href="/progress-tracker">Progress</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a><a href="/psmf-calculator">PSMF</a></div></header>}
+function Nav(){return <header className="tool-nav"><a href="/">BF · AI Body Fat Calculator</a><div><a href="/progress-tracker">Progress</a><a href="/tdee-calculator">TDEE</a><a href="/bmi-calculator">BMI</a><a href="/psmf-calculator">PSMF</a></div></header>}

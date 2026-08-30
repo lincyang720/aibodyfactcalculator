@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "BodyLens AI body fat calculator and physique progress tracker";
+export const alt = "AI Body Fat Calculator body composition and physique progress tracker";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,7 +34,7 @@ export default function OpenGraphImage() {
         >
           BF
         </div>
-        BodyLens
+        AI Body Fat Calculator
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
         <div style={{ fontSize: 73, lineHeight: 1.02, letterSpacing: -3, fontWeight: 800, maxWidth: 1040 }}>

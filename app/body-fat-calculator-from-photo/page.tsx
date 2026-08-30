@@ -23,7 +23,7 @@ const page: LongTailPage = {
   faq: [
     ["Can a photo really calculate body fat?", "A photo can support a directional estimate, especially for tracking changes under consistent conditions. It should not be treated like a clinical measurement."],
     ["Is this better than a smart scale?", "It is different. Smart scales estimate from electrical impedance, while photo analysis estimates from visible composition markers. Both are best used as trend tools."],
-    ["Does BodyLens save my photo?", "BodyLens does not store your uploaded photo. The image is sent to the AI processor for the requested analysis, and the saved baseline stores only numeric results in your browser."],
+    ["Does AI Body Fat Calculator save my photo?", "AI Body Fat Calculator does not store your uploaded photo. The image is sent to the AI processor for the requested analysis, and the saved baseline stores only numeric results in your browser."],
   ],
   related: [
     { href: "/progress-tracker", label: "Physique Progress Tracker", note: "Turn one estimate into a repeatable check-in" },
@@ -33,7 +33,7 @@ const page: LongTailPage = {
 };
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Body Fat Calculator From Photo | BodyLens",
+  title: "Body Fat Calculator From Photo | AI Body Fat Calculator",
   description: page.lede,
   path: `/${page.slug}`,
 });
