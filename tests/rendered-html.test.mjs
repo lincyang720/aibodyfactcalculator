@@ -43,7 +43,7 @@ test("every calculator route has route-specific metadata", async () => {
   assert.match(bmi, /path: "\/bmi-calculator"/);
   assert.match(tdee, /path: "\/tdee-calculator"/);
   assert.match(psmf, /path: "\/psmf-calculator"/);
-  assert.match(chart, /path:"\/body-fat-percentage-chart"/);
+  assert.match(chart, /path:\s*"\/body-fat-percentage-chart"/);
 });
 
 test("progress tracking is honest and privacy-preserving", async () => {
@@ -80,11 +80,26 @@ test("FFMI calculator includes normalized formula and page schema", async () => 
     readFile(new URL("app/ffmi-calculator/FfmiCalculator.tsx", root), "utf8"),
   ]);
   assert.match(page, /FFMI Calculator — Fat Free Mass Index \(Normalized\) \| AI Body Fat Calculator/);
+  assert.match(page, /Fat Free Mass Calculator/);
+  assert.match(page, /FFMI Chart/);
+  assert.match(page, /FFMI Calculator Female Guide/);
+  assert.match(page, /Fat Free Mass Calculator/);
   assert.match(page, /FAQPage/);
   assert.match(page, /SoftwareApplication/);
   assert.match(calculator, /leanMassKg\/\(heightM\*\*2\)/);
   assert.match(calculator, /ffmi\+6\.3\*\(1\.8-heightM\)/);
   assert.doesNotMatch(page, /proof of performance-enhancing drug use/i);
+});
+
+test("body fat chart page acts as a chart hub", async () => {
+  const page = await readFile(new URL("app/body-fat-percentage-chart/page.tsx", root), "utf8");
+  assert.match(page, /BODY FAT CHART HUB/);
+  assert.match(page, /male-body-fat-percentage-pictures/);
+  assert.match(page, /female-body-fat-percentage-pictures/);
+  assert.match(page, /body-fat-percentage-chart-men-women-age/);
+  assert.match(page, /body-fat-estimate-pictures/);
+  assert.match(page, /FAQPage/);
+  assert.match(page, /BreadcrumbList/);
 });
 
 test("all public routes are present in the app directory", async () => {
