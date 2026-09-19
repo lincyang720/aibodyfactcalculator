@@ -82,6 +82,7 @@ export default function Chart() {
           <h2>Why estimates from different methods disagree</h2>
           <p>Photo analysis, skinfolds, bioelectrical impedance, circumference equations, DXA, and multi-compartment laboratory methods estimate body composition in different ways. A result can shift when the method, device, operator, hydration status, or testing protocol changes.</p>
           <p>For progress tracking, keep the method and conditions as consistent as possible. Treat a small short-term movement cautiously and look for a repeated trend across several check-ins.</p>
+          <p>To turn your own tape measurements into a number, run them through the <a href="/body-fat-calculator">body fat calculator</a>, which applies the U.S. Navy circumference equations and the BMI method side by side.</p>
         </section>
 
         <section className="content-block ffmi-faq">
