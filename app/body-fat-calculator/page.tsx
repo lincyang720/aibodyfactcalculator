@@ -7,20 +7,23 @@ type Unit = "us" | "metric";
 type Method = "navy" | "bmi";
 type Sex = "male" | "female";
 
+// Band labels and boundaries are written to one decimal place so that every
+// result falls into exactly one row, with no gap between consecutive bands.
+// These strings must stay in sync with classifyBodyFat() below.
 const MEN_RANGES = [
-  ["Essential fat", "2–5%"],
-  ["Athletes", "6–13%"],
-  ["Fitness", "14–17%"],
-  ["Average", "18–24%"],
-  ["Obese", "25%+"],
+  ["Essential fat", "below 6%"],
+  ["Athletes", "6.0–13.9%"],
+  ["Fitness", "14.0–17.9%"],
+  ["Average", "18.0–24.9%"],
+  ["Obese", "25.0% and above"],
 ];
 
 const WOMEN_RANGES = [
-  ["Essential fat", "10–13%"],
-  ["Athletes", "14–20%"],
-  ["Fitness", "21–24%"],
-  ["Average", "25–31%"],
-  ["Obese", "32%+"],
+  ["Essential fat", "below 14%"],
+  ["Athletes", "14.0–20.9%"],
+  ["Fitness", "21.0–24.9%"],
+  ["Average", "25.0–31.9%"],
+  ["Obese", "32.0% and above"],
 ];
 
 function toInches(value: number, unit: Unit): number {
@@ -70,18 +73,20 @@ function estimateBodyFat(args: {
   return 1.2 * bmi + 0.23 * age - (sex === "male" ? 16.2 : 5.4);
 }
 
+// Boundaries use the same numbers as the tables above: each band is
+// [start, next start) so consecutive bands meet with no gap.
 function classifyBodyFat(bf: number, sex: Sex): string {
   if (sex === "male") {
-    if (bf < 6) return "Essential";
-    if (bf <= 13) return "Athletes";
-    if (bf <= 17) return "Fitness";
-    if (bf <= 24) return "Average";
+    if (bf < 6) return "Essential fat";
+    if (bf < 14) return "Athletes";
+    if (bf < 18) return "Fitness";
+    if (bf < 25) return "Average";
     return "Obese";
   }
-  if (bf < 14) return "Essential";
-  if (bf <= 20) return "Athletes";
-  if (bf <= 24) return "Fitness";
-  if (bf <= 31) return "Average";
+  if (bf < 14) return "Essential fat";
+  if (bf < 21) return "Athletes";
+  if (bf < 25) return "Fitness";
+  if (bf < 32) return "Average";
   return "Obese";
 }
 
@@ -98,6 +103,10 @@ export default function BodyFatCalculatorPage() {
 
   const bf = estimateBodyFat({ unit, method, sex, age, weight, height, neck, waist, hip });
   const valid = bf !== null && Number.isFinite(bf) && bf > 0 && bf < 80;
+  // The number shown to the reader is rounded to one decimal, so the band is
+  // chosen from the rounded value. Otherwise 13.96 would print as "14.0%" but
+  // still be labelled Athletes while the table puts 14.0% in Fitness.
+  const bfShown = valid ? Number((bf as number).toFixed(1)) : null;
   const totalKg = toKilos(weight, unit);
   const fatKg = valid ? (totalKg * (bf as number)) / 100 : null;
   const leanKg = valid ? totalKg - (fatKg as number) : null;
@@ -215,11 +224,13 @@ export default function BodyFatCalculatorPage() {
 
           <div className="answer-card">
             <span>YOUR BODY FAT</span>
-            <div className="answer-number">{valid ? `${(bf as number).toFixed(1)}%` : "—"}</div>
+            <div className="answer-number">
+              {valid ? `${(bfShown as number).toFixed(1)}%` : "—"}
+            </div>
             {valid ? (
               <>
                 <p>
-                  {classifyBodyFat(bf as number, sex)} range by the American Council on Exercise
+                  {classifyBodyFat(bfShown as number, sex)} range by the American Council on Exercise
                   categories.
                 </p>
                 <p>
