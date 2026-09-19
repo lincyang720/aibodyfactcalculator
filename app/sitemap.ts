@@ -3,6 +3,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base="https://aibodyfatcalculator.com";
   return [
     {url:`${base}/`,lastModified:new Date(),changeFrequency:"weekly",priority:1},
+    {url:`${base}/body-fat-calculator`,lastModified:new Date(),changeFrequency:"weekly",priority:.95},
     {url:`${base}/progress-tracker`,lastModified:new Date(),changeFrequency:"weekly",priority:.95},
     {url:`${base}/body-fat-calculator-from-photo`,lastModified:new Date(),changeFrequency:"weekly",priority:.9},
     {url:`${base}/body-fat-estimate-pictures`,lastModified:new Date(),changeFrequency:"weekly",priority:.85},
