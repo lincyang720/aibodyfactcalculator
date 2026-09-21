@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {url:`${base}/ffmi-vs-bmi`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/body-fat-percentage-chart-men-women-age`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/army-body-fat-standards-2026`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
+    {url:`${base}/body-fat-index`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/signs-body-fat-percentage-too-high`,lastModified:new Date(),changeFrequency:"monthly",priority:.7},
     {url:`${base}/privacy`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
     {url:`${base}/terms`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
