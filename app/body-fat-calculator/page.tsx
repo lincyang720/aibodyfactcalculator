@@ -139,8 +139,8 @@ export default function BodyFatCalculatorPage() {
         <div className="tool-eyebrow">FREE BODY COMPOSITION TOOL</div>
         <h1>Body Fat Calculator</h1>
         <p className="tool-lede">
-          Estimate your body fat percentage in your browser with the U.S. Navy circumference method or
-          the BMI method. No photo, no upload, no login.
+          Estimate your body fat percentage right in your browser with the U.S. Navy circumference method or
+          the BMI method — no photo, no upload, no login required.
         </p>
 
         <div className="calc-layout">
@@ -240,7 +240,7 @@ export default function BodyFatCalculatorPage() {
                 </p>
               </>
             ) : (
-              <p>Enter your measurements to see an estimate.</p>
+              <p>Enter your measurements above to see your estimate.</p>
             )}
           </div>
         </div>
@@ -273,8 +273,8 @@ export default function BodyFatCalculatorPage() {
         <section className="content-block">
           <h2>Body fat category ranges</h2>
           <p>
-            Categories follow the American Council on Exercise (ACE) adult reference ranges. Your result
-            is placed into the matching band.
+            Categories follow the American Council on Exercise (ACE) adult reference ranges. We place
+            your result into the matching band.
           </p>
           <h3>Men</h3>
           <div className="chart-table">
