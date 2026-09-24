@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {url:`${base}/body-fat-percentage-calculator`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/weight-loss-percentage-calculator`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/navy-body-fat-calculator`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
+    {url:`${base}/body-recomposition-calculator`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/signs-body-fat-percentage-too-high`,lastModified:new Date(),changeFrequency:"monthly",priority:.7},
     {url:`${base}/privacy`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
     {url:`${base}/terms`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
