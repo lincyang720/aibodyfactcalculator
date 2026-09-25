@@ -10,3 +10,4 @@ Format: date | title | live URL | target word | gap used
 2026-09-22 | Weight Loss Percentage Calculator and Plateau Check | https://aibodyfatcalculator.com/weight-loss-percentage-calculator | weight loss percentage calculator (1.2万) | G4
 2026-09-23 | Navy Body Fat Calculator | https://aibodyfatcalculator.com/navy-body-fat-calculator | navy body fat calculator (6600) | G3
 2026-09-24 | Body Recomposition Calculator | https://aibodyfatcalculator.com/body-recomposition-calculator | body recomposition calculator (5400) | G2
+2026-09-25 | Army BMI Calculator — BMI, Waist-to-Height and Central Fat Zones | https://aibodyfatcalculator.com/army-bmi-calculator | army bmi calculator (2900) | G1
