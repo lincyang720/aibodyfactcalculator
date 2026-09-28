@@ -13,3 +13,4 @@ Format: date | title | live URL | target word | gap used
 2026-09-25 | Army BMI Calculator — BMI, Waist-to-Height and Central Fat Zones | https://aibodyfatcalculator.com/army-bmi-calculator | army bmi calculator (2900) | G1
 2026-09-26 | Fat Calculator — Body Fat From Tape or Caliper, With an Error Budget | https://aibodyfatcalculator.com/fat-calculator | fat calculator (2900) | G6
 2026-09-27 | Measure Body Fat — and See Where You Fall for Your Age and Sex | https://aibodyfatcalculator.com/measure-body-fat | measure body fat (1900) | G9
+2026-09-28 | Obese Scale: Why BMI Says Obese and Body Fat Says Something Else | https://aibodyfatcalculator.com/obese-scale | obese scale (1900) | G10
