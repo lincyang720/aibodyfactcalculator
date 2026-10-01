@@ -17,8 +17,13 @@ Format: date | title | live URL | target word | gap used
 2026-09-29 | Visceral Fat Calculator — What Your Waist Can and Cannot Tell You | https://aibodyfatcalculator.com/visceral-fat-calculator | visceral fat calculator (1900) | G1
 2026-09-30 | Fat Percentage Calculator — Three Methods, One Honest Range | https://aibodyfatcalculator.com/fat-percentage-calculator | fat percentage calculator (1600) | G8
 
+2026-10-01 | Measure Body Fat Percentage — The Smallest Change Your Tape Can See | https://aibodyfatcalculator.com/measure-body-fat-percentage | measure body fat percentage (1300) | G6
+
 Note 2026-09-29: gaps G1–G10 were all consumed by the first ten pages, so for word 11 (visceral fat
 calculator) the "fall back to the largest unused gap" rule had no unused gap left to fall back to.
 Rather than publish nothing, the run used the word's own mapped gap (G1) a second time, which the
 mapping table itself implies (G5 is mapped to five words, G6 to four). Needs operator confirmation
 for words 12–20. Word 12 (fat percentage calculator) followed the same rule with its own mapped gap G8.
+Word 13 (measure body fat percentage) followed the same rule with its own mapped gap G6; the page is
+taken from a new angle — instrument resolution — so it does not repeat /fat-calculator (slip and error
+budget) or /how-to-measure-body-fat-at-home (qualitative five-method guide).
