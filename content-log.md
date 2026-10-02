@@ -18,6 +18,7 @@ Format: date | title | live URL | target word | gap used
 2026-09-30 | Fat Percentage Calculator — Three Methods, One Honest Range | https://aibodyfatcalculator.com/fat-percentage-calculator | fat percentage calculator (1600) | G8
 
 2026-10-01 | Measure Body Fat Percentage — The Smallest Change Your Tape Can See | https://aibodyfatcalculator.com/measure-body-fat-percentage | measure body fat percentage (1300) | G6
+2026-10-02 | Body Composition Calculator — Fat, Lean, and Four Routes to One Number | https://aibodyfatcalculator.com/body-composition-calculator | body composition calculator (1300) | G10
 
 Note 2026-09-29: gaps G1–G10 were all consumed by the first ten pages, so for word 11 (visceral fat
 calculator) the "fall back to the largest unused gap" rule had no unused gap left to fall back to.
@@ -27,3 +28,6 @@ for words 12–20. Word 12 (fat percentage calculator) followed the same rule wi
 Word 13 (measure body fat percentage) followed the same rule with its own mapped gap G6; the page is
 taken from a new angle — instrument resolution — so it does not repeat /fat-calculator (slip and error
 budget) or /how-to-measure-body-fat-at-home (qualitative five-method guide).
+Word 14 (body composition calculator) followed the same rule with its own mapped gap G10; the page is
+taken from a new angle — the two-compartment identity W = F + L and its exact inversions — so it does
+not repeat /obese-scale (BMI vs body fat cross-classification, FMI/FFMI grids).
