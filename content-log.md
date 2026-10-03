@@ -19,6 +19,7 @@ Format: date | title | live URL | target word | gap used
 
 2026-10-01 | Measure Body Fat Percentage — The Smallest Change Your Tape Can See | https://aibodyfatcalculator.com/measure-body-fat-percentage | measure body fat percentage (1300) | G6
 2026-10-02 | Body Composition Calculator — Fat, Lean, and Four Routes to One Number | https://aibodyfatcalculator.com/body-composition-calculator | body composition calculator (1300) | G10
+2026-10-03 | Ideal Body Fat Percentage Calculator — Your Band, in Kilograms and Scale Weight | https://aibodyfatcalculator.com/ideal-body-fat-percentage-calculator | ideal body fat percentage calculator (1000) | G9
 
 Note 2026-09-29: gaps G1–G10 were all consumed by the first ten pages, so for word 11 (visceral fat
 calculator) the "fall back to the largest unused gap" rule had no unused gap left to fall back to.
@@ -31,3 +32,7 @@ budget) or /how-to-measure-body-fat-at-home (qualitative five-method guide).
 Word 14 (body composition calculator) followed the same rule with its own mapped gap G10; the page is
 taken from a new angle — the two-compartment identity W = F + L and its exact inversions — so it does
 not repeat /obese-scale (BMI vs body fat cross-classification, FMI/FFMI grids).
+Word 15 (ideal body fat percentage calculator) followed the same rule with its own mapped gap G9; the
+page is taken from a new angle — the band converted into kilograms of fat and into a range of scale
+readings via W(t) = L ÷ (1 − t) — so it does not repeat /measure-body-fat (corridor position, crossover
+ages, noise widths).
