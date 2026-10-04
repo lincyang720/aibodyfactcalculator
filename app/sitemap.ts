@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {url:`${base}/measure-body-fat-percentage`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/body-composition-calculator`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/ideal-body-fat-percentage-calculator`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
+    {url:`${base}/body-fat-calculator-caliper`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/signs-body-fat-percentage-too-high`,lastModified:new Date(),changeFrequency:"monthly",priority:.7},
     {url:`${base}/privacy`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
     {url:`${base}/terms`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
