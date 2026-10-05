@@ -22,6 +22,7 @@ Format: date | title | live URL | target word | gap used
 2026-10-03 | Ideal Body Fat Percentage Calculator — Your Band, in Kilograms and Scale Weight | https://aibodyfatcalculator.com/ideal-body-fat-percentage-calculator | ideal body fat percentage calculator (1000) | G9
 
 2026-10-04 | Body Fat Calculator Caliper: 3-Site vs 7-Site Skinfold | https://aibodyfatcalculator.com/body-fat-calculator-caliper | body fat calculator caliper (1000) | G6
+2026-10-05 | Best BMI Scale: What the Spec Sheet Is Really Worth | https://aibodyfatcalculator.com/best-bmi-scale | best bmi scale (590) | G5
 
 Note 2026-09-29: gaps G1–G10 were all consumed by the first ten pages, so for word 11 (visceral fat
 calculator) the "fall back to the largest unused gap" rule had no unused gap left to fall back to.
@@ -42,3 +43,7 @@ Word 16 (body fat calculator caliper) followed the same rule with its own mapped
   taken from a new angle — the 3-site vs 7-site equilibrium ratio rho* and the two error families
   (random per-site scatter vs systematic technique bias) — so it does not repeat /fat-calculator
   (per-site slip and error budget) or /measure-body-fat-percentage (instrument resolution floor).
+Word 17 (best bmi scale) followed the same rule with its own mapped gap G5; the page is taken from a new
+  angle — printed-spec arithmetic and the device's own constants, with the height entry shown to dominate
+  the hardware tolerance — so it does not repeat /scale-bmi (what a smart scale measures, and how your own
+  hydration moves the reading).
