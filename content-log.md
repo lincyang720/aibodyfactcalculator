@@ -24,6 +24,7 @@ Format: date | title | live URL | target word | gap used
 2026-10-04 | Body Fat Calculator Caliper: 3-Site vs 7-Site Skinfold | https://aibodyfatcalculator.com/body-fat-calculator-caliper | body fat calculator caliper (1000) | G6
 2026-10-05 | Best BMI Scale: What the Spec Sheet Is Really Worth | https://aibodyfatcalculator.com/best-bmi-scale | best bmi scale (590) | G5
 2026-10-06 | Best Way to Measure Body Fat: Pick the Method You Can Repeat | https://aibodyfatcalculator.com/best-way-to-measure-body-fat | best way to measure body fat (590) | G6
+2026-10-07 | BMI Machine: Five Tests for the One You Already Own | https://aibodyfatcalculator.com/bmi-machine | bmi machine (590) | G5
 
 Note 2026-09-29: gaps G1–G10 were all consumed by the first ten pages, so for word 11 (visceral fat
 calculator) the "fall back to the largest unused gap" rule had no unused gap left to fall back to.
@@ -53,3 +54,9 @@ Word 18 (best way to measure body fat) followed the same rule with its own mappe
   each input), a computed method-selection verdict and the break-even pinch — so it does not repeat
   /fat-calculator (forward slip -> error budget), /measure-body-fat-percentage (instrument resolution),
   /body-fat-calculator-caliper (3-vs-7 equilibrium) or /how-to-measure-body-fat-at-home (qualitative guide).
+Word 19 (bmi machine) followed the same rule with its own mapped gap G5; the page is taken from a new
+  angle — auditing the unit you already own, with five home tests and their computed detection thresholds
+  (gain vs offset decomposition, minimum detectable slope error, extrapolation amplification, placement,
+  repeatability, drift, and the shared-sensor coupling between BMI and body fat) — so it does not repeat
+  /scale-bmi (what a smart scale measures, hydration model) or /best-bmi-scale (spec-sheet arithmetic,
+  height entry vs load-cell tolerance).
