@@ -40,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {url:`${base}/best-bmi-scale`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/best-way-to-measure-body-fat`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/bmi-machine`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
+    {url:`${base}/body-mass-scale`,lastModified:new Date(),changeFrequency:"monthly",priority:.75},
     {url:`${base}/signs-body-fat-percentage-too-high`,lastModified:new Date(),changeFrequency:"monthly",priority:.7},
     {url:`${base}/privacy`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},
     {url:`${base}/terms`,lastModified:new Date(),changeFrequency:"yearly",priority:.2},

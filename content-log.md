@@ -25,6 +25,7 @@ Format: date | title | live URL | target word | gap used
 2026-10-05 | Best BMI Scale: What the Spec Sheet Is Really Worth | https://aibodyfatcalculator.com/best-bmi-scale | best bmi scale (590) | G5
 2026-10-06 | Best Way to Measure Body Fat: Pick the Method You Can Repeat | https://aibodyfatcalculator.com/best-way-to-measure-body-fat | best way to measure body fat (590) | G6
 2026-10-07 | BMI Machine: Five Tests for the One You Already Own | https://aibodyfatcalculator.com/bmi-machine | bmi machine (590) | G5
+2026-10-08 | Body Mass Scale: The Number Is Noise, the Trend Is Data | https://aibodyfatcalculator.com/body-mass-scale | body mass scale (590) | G5
 
 Note 2026-09-29: gaps G1–G10 were all consumed by the first ten pages, so for word 11 (visceral fat
 calculator) the "fall back to the largest unused gap" rule had no unused gap left to fall back to.
@@ -60,3 +61,11 @@ Word 19 (bmi machine) followed the same rule with its own mapped gap G5; the pag
   repeatability, drift, and the shared-sensor coupling between BMI and body fat) — so it does not repeat
   /scale-bmi (what a smart scale measures, hydration model) or /best-bmi-scale (spec-sheet arithmetic,
   height entry vs load-cell tolerance).
+Word 20 (body mass scale) followed the same rule with its own mapped gap G5; the page is taken from a new
+  angle — the daily weigh-in read as a time series rather than as a reading: the standard error of a mean
+  and of a least-squares slope over N days, the regression-vs-two-readings factor sqrt((N^2-1)/6N), the
+  EWMA/SMA equivalence at equal variance, the display-graduation penalty, and the 100*dW/W body-fat
+  ambiguity width — so it does not repeat /scale-bmi, /best-bmi-scale or /bmi-machine.
+
+**本批词用完，请给下一批** — all 20 approved words have now been used (2026-09-21 to 2026-10-08).
+No further pages will be published until the operator supplies a new batch of keywords.
