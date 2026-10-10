@@ -69,3 +69,10 @@ Word 20 (body mass scale) followed the same rule with its own mapped gap G5; the
 
 **本批词用完，请给下一批** — all 20 approved words have now been used (2026-09-21 to 2026-10-08).
 No further pages will be published until the operator supplies a new batch of keywords.
+
+2026-10-09 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Live check only: https://aibodyfatcalculator.com/sitemap.xml returned HTTP 200 with 44 urls.
+
+2026-10-10 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Live check only: sitemap.xml HTTP 200 with 44 urls; /body-mass-scale HTTP 200 (title rendered).
+  Output: 本批词用完，请给下一批
