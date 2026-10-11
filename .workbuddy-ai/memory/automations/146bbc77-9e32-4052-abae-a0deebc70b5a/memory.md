@@ -1,8 +1,30 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #22 (2026-10-10) — NO PUBLISH, batch exhausted (2nd consecutive day)
+- Re-read content-log.md: all 20 approved words still used (2026-09-21 → 2026-10-08). No word left in the
+  batch, so per the operator's rule: stop publishing, output 「本批词用完，请给下一批」. Did not invent a
+  word or estimate a volume.
+- Verified live state only: sitemap.xml HTTP 200 with 44 `<loc>` entries (unchanged); /body-mass-scale
+  HTTP 200 with its title rendered; homepage HTTP 200.
+- Committed the two outstanding content-log.md entries (2026-10-09, 2026-10-10) and pushed to main so the
+  remote is back in sync. No page, no sitemap change.
+- 28-day GSC/GA4 report still NOT due (cycle started 2026-09-21, due ~2026-10-19). No GSC/GA4 connector →
+  output 读不到 when due.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #21 (2026-10-09) — NO PUBLISH, batch exhausted
+- Read content-log.md: all 20 approved words used (2026-09-21 → 2026-10-08). Followed the operator's
+  batch rule: stop publishing and output 「本批词用完，请给下一批」. Did not invent a word or estimate a volume.
+- Verified live state only: sitemap.xml HTTP 200 with 44 `<loc>` entries (unchanged from run #20).
+- 28-day GSC/GA4 still not due (cycle started 2026-09-21, due ~2026-10-19). No connector → 读不到 when due.
+- No commit/push today. **Do not publish again until the operator supplies a new keyword batch.**
+- Still-unconfirmed standing issue: 20 words mapped onto 10 gaps, so "one gap per page" and "never a
+  zero-page day" are mutually unsatisfiable after word 10; runs #11–#20 used each word's own mapped gap
+  with a fresh angle. Keep flagging until the operator rules.
+
 ## Batch progress (20 approved words, one per page, never reused)
-0. Word #19 next = **bmi machine** (590) → mapped gap G5 (see run #18). Words 19 and 20 both map to G5;
-   each needs a fresh angle distinct from /scale-bmi and /best-bmi-scale.
+0. **ALL 20 WORDS USED as of 2026-10-08.** Stop publishing; output "本批词用完，请给下一批" and wait for a
+   new keyword batch from the operator. Do not invent words or estimate volumes.
 1. body fat index (7.4万) → G7 → /body-fat-index → published 2026-09-21
 2. scale bmi (5万) → G5 → /scale-bmi → published 2026-09-22
 3. body fat percentage calculator (4万) → G8 → /body-fat-percentage-calculator → published 2026-09-22
@@ -349,6 +371,49 @@ Word 12 = **fat percentage calculator** (1600) → mapped gap G8.
   into app/tool-pages.css (2026-09-23) so any tool page can use it.
 - Navy constants used site-wide (inches): men 86.010·log10(waist−neck) − 70.041·log10(height) + 36.76;
   women 163.205·log10(waist+hip−neck) − 97.684·log10(height) − 78.387.
+
+## Run #20 summary (2026-10-08) — LAST WORD OF THE BATCH
+- Word 20 = **body mass scale** (590) → mapped gap G5, reused per run-#11 decision (no unused gaps remain
+  since word 10). Fourth distinct G5 angle: **the daily weigh-in read as a time series, not as a reading**.
+  Distinct from /scale-bmi (what a smart scale measures, hydration model), /best-bmi-scale (spec-sheet
+  arithmetic, height entry vs load-cell tolerance) and /bmi-machine (auditing your own unit, gain vs
+  offset, five home tests).
+- Published /body-mass-scale, "Body Mass Scale: The Number Is Noise, the Trend Is Data".
+- Client calculator: units, height, weight, scale-reported BF%, six scatter levels (0.1–1.0 kg), averaging
+  window (1/3/7/14/28 days), display graduation (1/0.5/0.2/0.1/0.05 kg), entered weekly rate, days of
+  daily data, EWMA alpha. Output = BMI + class + single-reading band and n-day-mean band in kg and BMI pts
+  + clearance to the nearest WHO line + SE of the fitted slope + smallest detectable weekly rate + days
+  needed for the entered rate + regression-vs-two-readings factor and its equivalent two-reading spacing +
+  MDC on the chosen mean and the days of real loss it takes + total change over the window + the body-fat
+  ambiguity interval + the graduation penalty + the EWMA/SMA equivalence line.
+- Exclusive self-computed content: SE(mean) = sigma/sqrt(n) and SE(slope) = sigma*sqrt(12/(N(N^2-1))) from
+  the exact deviations sum N(N^2-1)/12; the day-count grid (0.5 kg/wk needs 8/10/14/18/21 days at sigma
+  0.2/0.3/0.5/0.8/1.0); smallest detectable weekly rate by window (7 d → 1.296 kg/wk, 28 d → 0.160,
+  84 d → 0.031) with the total-change-over-window column *falling* 1.30 → 0.25 kg; **regression beats two
+  readings by sqrt((N^2-1)/6N)** (1.07x at 7 d, 2.16x at 28 d, 3.74x at 84 d), equivalent two-reading
+  spacing sqrt(N(N^2-1)/6) (28 daily readings = one comparison 60.4 days apart); a 28-day worked series
+  generated here from a stated model (true -0.400 kg/wk, sigma 0.5) where regression recovers -0.394 kg/wk
+  (SE 0.071) while the endpoint pair gives -0.156 kg/wk (SE 0.183, indistinguishable from zero); the
+  **EWMA/SMA identity** — at equal variance n = (2-alpha)/alpha and both have mean age (1-alpha)/alpha, so
+  no smoother is faster than a plain average of (2-alpha)/alpha days; the graduation table (1 kg display
+  costs 10.1% more days, 0.1 kg costs 0.1%) using the sigma^(2/3) scaling; and **100*dW/W ambiguity width**
+  (2.00 pts per kg at 50 kg → 0.91 at 110 kg; 1.28 pts on a 78 kg body) which is independent of BF% because
+  the BF terms cancel.
+- Honesty guard kept: "Where this page's arithmetic stops being true" — no device measured, no product
+  named/ranked; independence of daily deviations assumed not established; straight line assumed;
+  two-compartment conversion is a model; WHO classes are screening bands; the worked series is explicitly
+  generated here. The "dropped 2 kg overnight" FAQ declines to give a physiological cause.
+- Three numeric errors fixed before publishing: 1.8% → 1.3% (single-reading band as a share of a 78 kg
+  body); 3.9–5.8% → 4.1–6.2% (7-day mean band as a share of the overweight band); and the weekly-vs-daily
+  FAQ which first quoted 1.069 kg/wk (that is the N=7 ratio, not a rate) — recomputed to 5 weekly readings
+  over 28 days resolving 0.310 kg/wk, 1.93x coarser than daily, i.e. sub-proportional in the count.
+- tsc --noEmit exit 0 before push (one TS2774 fix: `bmiClass && ok` → `ok`).
+- Live confirmed: HTTP 200 / Server: Vercel / X-Matched-Path /body-mass-scale, title + H1 + canonical
+  present, answer card server-rendered (25.5, Overweight, 0.161, 16 days, 2.16, 2.05); sitemap.xml
+  43 → 44 urls. Deploy ~150 s (5 polls of 404, then 200).
+- **BATCH EXHAUSTED.** All 20 approved words are used (2026-09-21 → 2026-10-08). Next run must stop
+  publishing and output "本批词用完，请给下一批" until the operator supplies a new keyword batch.
+- 28-day GSC/GA4 report still not due (cycle started 2026-09-21, due ~2026-10-19). No GSC/GA4 connector.
 
 ## Run #19 summary (2026-10-07)
 - Word 19 = **bmi machine** (590) → mapped gap G5, reused per run-#11 decision (no unused gaps remain since
