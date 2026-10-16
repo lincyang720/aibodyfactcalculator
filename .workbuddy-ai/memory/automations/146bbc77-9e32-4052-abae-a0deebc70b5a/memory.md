@@ -1,5 +1,34 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #28 (2026-10-16) — NO PUBLISH, batch exhausted (8th consecutive day)
+- Re-read content-log.md: all 20 approved words still used (2026-09-21 → 2026-10-08). No word remains,
+  so per the operator's rule: stop publishing, output 「本批词用完，请给下一批」. No invented word,
+  no estimated volume.
+- Verified live state only: sitemap.xml HTTP 200 with 44 `<loc>` entries (unchanged); homepage HTTP 200
+  (Server: Vercel, X-Vercel-Cache HIT, title "AI Body Fat Calculator & Physique Progress Tracker");
+  /body-mass-scale HTTP 200 with Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache
+  PRERENDER, canonical https://aibodyfatcalculator.com/body-mass-scale, title rendered. Sitemap already
+  contains all 20 pages — nothing to add.
+- Appended today's content-log.md entry and pushed to main (6c754ce); remote in sync.
+- Confirmed via list_installed_plugins: **no connectors installed at all** → GSC and GA4 are both 读不到
+  with no possibility of retrieval. Do not attempt to source those numbers any other way.
+- 28-day GSC/GA4 report still NOT due (cycle started 2026-09-21, due ~2026-10-19). Next run (2026-10-17)
+  is still early; the 2026-10-19 run should emit the first 28-day row, all four fields = 读不到.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #27 (2026-10-15) — NO PUBLISH, batch exhausted (7th consecutive day)
+- Re-read content-log.md: all 20 approved words still used (2026-09-21 → 2026-10-08). No word remains,
+  so per the operator's rule: stop publishing, output 「本批词用完，请给下一批」. No invented word,
+  no estimated volume.
+- Verified live state only: sitemap.xml HTTP 200 with 44 `<loc>` entries (unchanged); homepage HTTP 200;
+  /body-mass-scale HTTP 200 with Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache PRERENDER
+  and its title rendered. Sitemap already contains all 20 pages — nothing to add.
+- Appended today's content-log.md entry plus the workspace memory file and pushed to main (1bb741a);
+  remote in sync.
+- 28-day GSC/GA4 report still NOT due (cycle started 2026-09-21, due ~2026-10-19). No GSC/GA4 connector
+  → output 读不到 when due.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
 ## Run #26 (2026-10-14) — NO PUBLISH, batch exhausted (6th consecutive day)
 - Re-read content-log.md: all 20 approved words still used (2026-09-21 → 2026-10-08). No word remains, so
   per the operator's rule: stop publishing, output 「本批词用完，请给下一批」. No invented word, no estimated volume.
