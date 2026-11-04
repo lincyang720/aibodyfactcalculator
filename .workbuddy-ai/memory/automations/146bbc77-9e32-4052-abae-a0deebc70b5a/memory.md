@@ -1,5 +1,14 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #29 (2026-11-04) — NO PUBLISH, batch exhausted; 28-day report emitted
+- All 20 approved words still used (2026-09-21 → 2026-10-08). No word remains.
+- Live check: sitemap.xml HTTP 200 (44 URLs); homepage HTTP 200 (Server: Vercel);
+  /body-mass-scale HTTP 200 (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache HIT).
+- No connectors installed → GSC/GA4 all 读不到.
+- **28-day report (round 1, cycle 2026-09-21 → 2026-10-18) emitted**: all four metrics = 读不到, 20 pages published in cycle.
+- Pushed content-log.md update (9855425).
+- **Do not publish again until the operator supplies a new keyword batch.**
+
 ## Run #28 (2026-10-16) — NO PUBLISH, batch exhausted (8th consecutive day)
 - Re-read content-log.md: all 20 approved words still used (2026-09-21 → 2026-10-08). No word remains,
   so per the operator's rule: stop publishing, output 「本批词用完，请给下一批」. No invented word,
