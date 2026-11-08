@@ -1,5 +1,37 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #32 (2026-11-08, 2nd run same day) — NO PUBLISH, batch exhausted; 28-day report not due
+- Re-read automation memory + content-log.md: all 20 approved words still used (2026-09-21 →
+  2026-10-08). A 2026-11-08 no-publish entry was already committed earlier today (43210b0), so this is
+  a same-day re-run; appended a distinct "2nd run" log line rather than duplicating the first.
+- Per operator terminal rule: no new keyword batch supplied → stop publishing, output
+  「本批词用完，请给下一批」. No invented word, no estimated volume, no GSC/GA4 number invented.
+- Live check (external curl, random ?v=113075): sitemap.xml HTTP 200 with 44 <loc> urls (unchanged);
+  homepage HTTP 200 (Server: Vercel, X-Vercel-Cache HIT); /body-mass-scale HTTP 200 (Server: Vercel,
+  X-Matched-Path /body-mass-scale, X-Vercel-Cache HIT). Site healthy, no new page, no sitemap change.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 1 emitted 2026-11-04 (cycle 2026-09-21 → 2026-10-18). Round 2 cycle
+  2026-10-19 → 2026-11-15 is still in progress (48 days since start); not due today. Next due ~2026-11-15/16.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #31 (2026-11-08) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08). No word remains.
+- Live check: sitemap.xml HTTP 200; homepage HTTP 200; /body-mass-scale?v=307418 HTTP 200.
+- No connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 2 cycle (2026-10-19 → 2026-11-15) not yet complete. No report due today.
+- Pushed content-log.md update (43210b0).
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #30 (2026-11-06) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08). No word remains.
+- Live check: sitemap.xml HTTP 200 (44 URLs); homepage HTTP 200; /body-mass-scale HTTP 200
+  (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache HIT, title rendered).
+- No connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 1 was emitted on 2026-11-04 (cycle 2026-09-21 → 2026-10-18).
+  Round 2 cycle is 2026-10-19 → 2026-11-15, not yet complete. No report due today.
+- Pushed content-log.md update (24fa037).
+- **Do not publish again until the operator supplies a new keyword batch.**
+
 ## Run #29 (2026-11-04) — NO PUBLISH, batch exhausted; 28-day report emitted
 - All 20 approved words still used (2026-09-21 → 2026-10-08). No word remains.
 - Live check: sitemap.xml HTTP 200 (44 URLs); homepage HTTP 200 (Server: Vercel);
