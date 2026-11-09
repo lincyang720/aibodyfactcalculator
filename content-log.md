@@ -151,3 +151,14 @@ No further pages will be published until the operator supplies a new batch of ke
   No connectors installed → GSC/GA4 all 读不到.
   28-day GSC/GA4 report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; no report due today.
   Output: 本批词用完，请给下一批
+
+2026-11-09 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Live check only (external curl, random ?v=118927): sitemap.xml HTTP 200 with 44 <loc> urls
+  (unchanged); homepage HTTP 200 (Server: Vercel, X-Vercel-Cache HIT); /body-mass-scale?v=118927
+  HTTP 200 (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache HIT). The GET on that
+  path timed out twice on the local link; HEAD with the same random param returned 200 with full
+  Vercel headers, so the page is live. No new page, no sitemap change — sitemap already contains
+  all 20 pages.
+  No GSC/GA4 connectors installed → all four metrics 读不到.
+  28-day GSC/GA4 report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; no report due today.
+  Output: 本批词用完，请给下一批
