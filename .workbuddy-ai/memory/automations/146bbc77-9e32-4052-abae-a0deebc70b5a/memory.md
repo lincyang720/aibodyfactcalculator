@@ -1,5 +1,69 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #37 (2026-11-13) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator's "请继续执行任务"
+  supplied NO new keyword batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批.
+  No invented word/volume, no GSC/GA4 number invented, no sitemap change (44 urls unchanged).
+- Live check (external curl, random ?v=104762): sitemap.xml HTTP 200 (Content-Type application/xml,
+  Server: Vercel, X-Vercel-Cache HIT) / 44 <loc> (unchanged); homepage HTTP 200 (Server: Vercel,
+  X-Vercel-Cache HIT); /body-mass-scale?v=104762 HTTP 200 (Server: Vercel, X-Matched-Path
+  /body-mass-scale, X-Vercel-Cache HIT). Site healthy.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; not due today. Next due ~2026-11-15/16.
+- Pushed content-log.md 2026-11-13 no-publish entry to main.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #36 (2026-11-12) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator's repeated "请继续执行任务"
+  supplied NO new keyword batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批.
+  No invented word/volume, no GSC/GA4 number invented.
+- Live check (external curl, random ?v=538879): sitemap.xml HTTP 200 (Content-Type application/xml,
+  Server: Vercel) / 44 <loc> (unchanged); homepage HTTP 200 (Server: Vercel, X-Vercel-Cache HIT);
+  /body-mass-scale?v=538879 HTTP 200 (Server: Vercel, X-Matched-Path /body-mass-scale,
+  X-Vercel-Cache PRERENDER). Site healthy, no new page, no sitemap change.
+- No connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; not due today. Next due ~2026-11-15/16.
+- Pushed content-log.md no-publish entry + pending 2026-11-09/10/11/12 daily memory notes (d610808) to main.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #35 (2026-11-11) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08); no new keyword batch supplied.
+  Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume, no
+  GSC/GA4 number invented.
+- Live check (external curl, random ?v=582934): sitemap.xml HTTP 200 / 44 <loc> (unchanged);
+  /body-mass-scale?v=582934 HTTP 200 (Server: Vercel, X-Matched-Path /body-mass-scale,
+  X-Vercel-Cache HIT). Site healthy.
+- No connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; not due today. Next due ~2026-11-15/16.
+- Pushed content-log.md no-publish entry (5d5f78a) to main.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #34 (2026-11-10) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08); no new keyword batch supplied.
+  Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume, no
+  GSC/GA4 number invented.
+- Live check (external curl, random ?v=118038): sitemap.xml HTTP 200 / 44 <loc> (unchanged);
+  homepage HTTP 200 (Server: Vercel, X-Vercel-Cache HIT); /body-mass-scale?v=118038 HTTP 200
+  (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache PRERENDER). Site healthy.
+- No connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; not due today. Next due ~2026-11-15/16.
+- Pushed content-log.md no-publish entry (e12019d) to main.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
+## Run #33 (2026-11-09) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08); no new keyword batch supplied.
+  Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume, no
+  GSC/GA4 number invented.
+- Live check (external curl, random ?v=118927): sitemap.xml HTTP 200 / 44 <loc> (unchanged);
+  homepage HTTP 200 (Server: Vercel, X-Vercel-Cache HIT); /body-mass-scale?v=118927 HTTP 200
+  (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache HIT). The GET timed out twice
+  on the local link; HEAD with the same param returned 200 with full Vercel headers → page live.
+  No new page, no sitemap change.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 2 cycle (2026-10-19 → 2026-11-15) not complete; not due today.
+- Pushed content-log.md no-publish entry (c0decf9) to main.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
 ## Run #32 (2026-11-08, 2nd run same day) — NO PUBLISH, batch exhausted; 28-day report not due
 - Re-read automation memory + content-log.md: all 20 approved words still used (2026-09-21 →
   2026-10-08). A 2026-11-08 no-publish entry was already committed earlier today (43210b0), so this is
