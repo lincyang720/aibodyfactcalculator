@@ -1,5 +1,24 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #39 (2026-11-15) — NO PUBLISH, batch exhausted; 28-day report (round 2) DUE and emitted
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
+  batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
+  no GSC/GA4 number invented, no sitemap change (44 urls unchanged).
+- Live check (external curl, random ?v=117208): sitemap.xml HTTP 200 (Content-Type application/xml,
+  Server: Vercel, X-Vercel-Cache HIT) / 44 <loc>; homepage HTTP 200 (Server: Vercel); /body-mass-scale
+  ?v=117208 HTTP 200 (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache PRERENDER),
+  title + H1 + canonical server-rendered ("Body Mass Scale: The Number Is Noise, the Trend Is Data").
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- **28-day report round 2 EMITTED today**: cycle 2026-10-19 → 2026-11-15 (28 days, ends today),
+  per run-#38 handoff "next daily runs should emit round 2". All four metrics = 读不到, 当期发了 0 篇
+  (last publish was 2026-10-08). Round 1 was emitted 2026-11-04 for cycle 2026-09-21 → 2026-10-18;
+  the 11-day gap between EMISSIONS is because round 1 was itself late — the CYCLES are contiguous
+  28-day blocks, so round 2 is due at the end of cycle 2 = today.
+- Round 3 cycle = 2026-11-16 → 2026-12-13; next 28-day report due ~2026-12-13/14, all metrics 读不到
+  unless a real GSC/GA4 connector is added.
+- Pushed content-log.md 2026-11-15 no-publish entry + round-2 report to main.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
 ## Run #38 (2026-11-14) — NO PUBLISH, batch exhausted; 28-day report not due
 - All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
   batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
