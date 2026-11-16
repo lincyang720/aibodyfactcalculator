@@ -1,5 +1,22 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #40 (2026-11-16) — NO PUBLISH, batch exhausted; 28-day report not due
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
+  batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
+  no GSC/GA4 number invented, no sitemap change (44 urls unchanged).
+- Live check (external curl, random ?v=116977): sitemap.xml HTTP 200 (Content-Type application/xml,
+  Server: Vercel, X-Vercel-Cache MISS) / 44 <loc>; homepage HTTP 200 (Server: Vercel,
+  X-Vercel-Cache HIT); /body-mass-scale?v=116977 HTTP 200 (Server: Vercel, X-Matched-Path
+  /body-mass-scale, X-Vercel-Cache HIT, title + canonical rendered). Site healthy.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 1 emitted 2026-11-04 (cycle 2026-09-21 → 2026-10-18), round 2 emitted
+  2026-11-15 (cycle 2026-10-19 → 2026-11-15). Round 3 cycle = 2026-11-16 → 2026-12-13 is day 1
+  of 28 → NOT due today. Next due ~2026-12-13/14; all four metrics 读不到 unless a real GSC/GA4
+  connector is added.
+- Pushed content-log.md 2026-11-16 no-publish entry + workspace daily note to main.
+- Standing conflict: 「不许一天零篇」 vs the batch-exhausted terminal rule — terminal rule wins.
+- **Do not publish again until the operator supplies a new keyword batch.**
+
 ## Run #39 (2026-11-15) — NO PUBLISH, batch exhausted; 28-day report (round 2) DUE and emitted
 - All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
   batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
