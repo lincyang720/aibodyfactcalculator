@@ -235,3 +235,15 @@ No further pages will be published until the operator supplies a new batch of ke
   28-day GSC/GA4 report: round 2 already emitted 2026-11-15; round 3 cycle
   (2026-11-16 → 2026-12-13) is day 1 of 28 — no report due today. Next due ~2026-12-13/14.
   Output: 本批词用完，请给下一批
+
+2026-11-17 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Live check only (external curl, random ?v=732955): sitemap.xml HTTP 200 (Content-Type
+  application/xml, Server: Vercel, X-Vercel-Cache HIT) with 44 <loc> urls (unchanged);
+  homepage HTTP 200 (Server: Vercel, X-Vercel-Cache HIT); /body-mass-scale?v=732955 HTTP 200
+  (Server: Vercel, X-Matched-Path /body-mass-scale, X-Vercel-Cache PRERENDER, title
+  "Body Mass Scale: The Number Is Noise, the Trend Is Data" + canonical rendered).
+  No new page, no sitemap change — sitemap already contains all 20 pages (44 urls).
+  No connectors installed (list_installed_plugins: none) → GSC/GA4 all 读不到.
+  28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 2 of 28 —
+  no report due today. Next due ~2026-12-13/14.
+  Output: 本批词用完，请给下一批
