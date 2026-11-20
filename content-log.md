@@ -271,3 +271,30 @@ No further pages will be published until the operator supplies a new batch of ke
   28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 4 of 28 —
   no report due today. Next due ~2026-12-13/14.
   Output: 本批词用完，请给下一批
+
+2026-11-20 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Terminal rule: all 20 approved words used (2026-09-21 → 2026-10-08), operator supplied no new
+  keyword batch → 本批词用完，请给下一批. No invented word/volume, no GSC/GA4 number fabricated,
+  no new page, no sitemap change (local app/sitemap.ts still 44 urls).
+  *** LIVE-SITE ANOMALY — verified and reported honestly, NOT fixed ***
+  The public domain no longer matches the task premise (托管在 Vercel / Server: Vercel). Verified
+  with 5 distinct random ?v= params, an independent WebFetch (different network path, identical
+  sitemap), and DNS:
+    - DNS aibodyfatcalculator.com → 2606:4700:3034::6815:25e4 (Cloudflare IPv6). Responses now
+      carry Server: cloudflare, CF-RAY, cf-nel; NO Server: Vercel / X-Vercel-Cache / X-Matched-Path.
+    - sitemap.xml HTTP 200 but only 25 <loc> urls (run #43 on 2026-11-19 recorded 44), all
+      lastmod 2026-11-19; the 25 urls are a subset of the local 44-url sitemap.ts.
+    - homepage title now "AI Body Fat Calculator — Navy Tape & BMI Estimate"
+      (was "AI Body Fat Calculator & Physique Progress Tracker").
+    - of the 20 published long-tail pages: 3 x HTTP 200 (body-fat-index, scale-bmi,
+      army-bmi-calculator); 2 x 301 (measure-body-fat → /how-to-measure-body-fat-at-home,
+      fat-percentage-calculator → /body-fat-calculator); 15 x 404 — including the last published
+      page /body-mass-scale (404). No page published today, so no new URL to verify.
+    - local git repo intact: HEAD efba614 == origin/main; git push still works. Configured remote
+      is aibodyfactcalculator.git (differs from the task's aibodyfatcalculator.git) but is in sync.
+  Cause NOT established — no speculation offered. Flagged for the operator: hosting/DNS appears to
+  have changed away from Vercel, so a git push to main may no longer update the live site.
+  No connectors installed (list_installed_plugins: none) → GSC/GA4 all 读不到.
+  28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 5 of 28 — not due today
+  (next ~2026-12-13/14); all four metrics 读不到.
+  Output: 本批词用完，请给下一批
