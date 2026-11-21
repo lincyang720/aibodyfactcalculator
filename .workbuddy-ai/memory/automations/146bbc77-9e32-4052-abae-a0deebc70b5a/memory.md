@@ -1,5 +1,55 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #45 (2026-11-21) — NO PUBLISH (batch exhausted); LIVE-SITE ANOMALY from #44 persists
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
+  batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
+  no GSC/GA4 number invented, no new page, no sitemap change (app/sitemap.ts still 44 urls).
+- Re-verified the #44 anomaly with external curl (random ?v=918728 / 549356 / 482913), an
+  independent WebFetch (separate network path), and no-param + fresh-param fetches — IDENTICAL:
+  `Server: cloudflare` + CF-RAY + cf-nel + CF-Cache-Status, NO Vercel headers; sitemap.xml HTTP 200
+  with exactly 25 <loc> all lastmod 2026-11-19 (a different set incl. photo/picture/standards-2026
+  pages); homepage title "AI Body Fat Calculator — Navy Tape & BMI Estimate". Slug sweep of the 20
+  published pages: 3 x 200 (body-fat-index, scale-bmi, army-bmi-calculator), 2 x 301
+  (measure-body-fat, fat-percentage-calculator), 15 x 404 incl. /body-mass-scale. A Cloudflare-only
+  URL (/signs-body-fat-percentage-too-high) returns 200; /body-mass-scale 404 even with no param;
+  local app/body-mass-scale/page.tsx EXISTS. Cause still NOT established — no speculation offered.
+  Do NOT claim the pages are live; a git push to main may no longer update the public site.
+- Local repo intact: HEAD 3013459, remote aibodyfactcalculator.git in sync. Appended content-log.md
+  2026-11-21 no-publish + anomaly entry, workspace daily note, and this summary; commit + push to main.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 3 cycle 2026-11-16 → 2026-12-13 is day 6 of 28 → NOT due today.
+  Next due ~2026-12-13/14; all four metrics 读不到 unless a real GSC/GA4 connector is added.
+- Standing conflict: 「不许一天零篇」 vs the batch-exhausted terminal rule — terminal rule wins.
+- **Do not publish again until the operator supplies a new keyword batch.** If asked about the site,
+  lead with the Cloudflare/25-url/15-of-20-pages-404 anomaly above.
+
+## Run #44 (2026-11-20) — NO PUBLISH (batch exhausted); **LIVE-SITE ANOMALY detected & reported**
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
+  batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
+  no GSC/GA4 number invented, no new page, no sitemap change (app/sitemap.ts still 44 urls).
+- **MAJOR new finding — the live site no longer matches the task's Vercel premise.** Verified with
+  5 random ?v= params, an independent WebFetch (separate network path, identical sitemap) and DNS:
+  DNS → 2606:4700:3034::6815:25e4 (Cloudflare IPv6); all responses now `Server: cloudflare`
+  + CF-RAY + cf-nel, NO Server: Vercel / X-Vercel-Cache / X-Matched-Path. sitemap.xml HTTP 200 but
+  only **25 <loc>** (was 44 on run #43 / 2026-11-19), all lastmod 2026-11-19, a subset of the local
+  44-url sitemap.ts. Homepage title changed to "AI Body Fat Calculator — Navy Tape & BMI Estimate"
+  (was "... & Physique Progress Tracker"). Of the 20 published long-tail pages: **3 x 200**
+  (body-fat-index, scale-bmi, army-bmi-calculator), **2 x 301** (measure-body-fat →
+  /how-to-measure-body-fat-at-home, fat-percentage-calculator → /body-fat-calculator), **15 x 404**
+  including the last published /body-mass-scale. Cause NOT established — no speculation offered.
+  Reported honestly per step 8; flagged for operator that hosting/DNS may have moved off Vercel so
+  a git push to main may no longer update the live site. Do NOT claim the pages are live.
+- Local repo intact: HEAD == origin/main; configured remote is `aibodyfactcalculator.git`
+  (task says `aibodyfatcalculator.git`) but is in sync and pushable.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 3 cycle 2026-11-16 → 2026-12-13 is day 5 of 28 → NOT due today.
+  Next due ~2026-12-13/14; all four metrics 读不到 unless a real GSC/GA4 connector is added.
+- Appended content-log.md 2026-11-20 no-publish + anomaly entry, plus workspace daily note;
+  both committed + pushed to main (f757fea, 3013459). Remote in sync.
+- Standing conflict: 「不许一天零篇」 vs the batch-exhausted terminal rule — terminal rule wins.
+- **Do not publish again until the operator supplies a new keyword batch.** If the operator asks
+  about the site, lead with the Cloudflare/25-url/15-of-20-pages-404 anomaly above.
+
 ## Run #43 (2026-11-19) — NO PUBLISH, batch exhausted; 28-day report not due
 - All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
   batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,

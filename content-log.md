@@ -298,3 +298,27 @@ No further pages will be published until the operator supplies a new batch of ke
   28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 5 of 28 — not due today
   (next ~2026-12-13/14); all four metrics 读不到.
   Output: 本批词用完，请给下一批
+
+2026-11-21 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Terminal rule: all 20 approved words used (2026-09-21 → 2026-10-08), operator supplied no new
+  keyword batch → 本批词用完，请给下一批. No invented word/volume, no GSC/GA4 number fabricated,
+  no new page, no sitemap change (local app/sitemap.ts still 44 urls).
+  *** LIVE-SITE ANOMALY PERSISTS (first detected run #44 on 2026-11-20) ***
+  Re-verified today with external curl (random ?v=918728 / ?v=549356 / ?v=482913), an independent
+  WebFetch (separate network path), and no-param + fresh-param fetches — all identical:
+    - Responses: Server: cloudflare, CF-RAY, cf-nel, CF-Cache-Status; NO Server: Vercel /
+      X-Vercel-Cache / X-Matched-Path.
+    - sitemap.xml HTTP 200 with exactly 25 <loc> urls, all lastmod 2026-11-19 (a different set
+      from the local 44-url sitemap.ts; includes photo/picture/standards-2026 pages).
+    - homepage title "AI Body Fat Calculator — Navy Tape & BMI Estimate".
+    - 20 published slugs: 3 x 200 (body-fat-index, scale-bmi, army-bmi-calculator), 2 x 301
+      (measure-body-fat, fat-percentage-calculator), 15 x 404 including /body-mass-scale.
+    - /body-mass-scale returns 404 even with no query param; a Cloudflare-only URL
+      (/signs-body-fat-percentage-too-high) returns 200; local app/body-mass-scale/page.tsx EXISTS.
+    - No page published today, so there is no new URL to verify as live.
+  Cause NOT established — no speculation offered. The public domain still does not match the task's
+  Vercel premise; a git push to main may no longer update the live site. Flagged for the operator.
+  No connectors installed (list_installed_plugins: none) → GSC/GA4 all 读不到.
+  28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 6 of 28 — not due today
+  (next ~2026-12-13/14); all four metrics 读不到.
+  Output: 本批词用完，请给下一批
