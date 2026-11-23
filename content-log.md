@@ -344,3 +344,25 @@ No further pages will be published until the operator supplies a new batch of ke
   28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 7 of 28 — not due
   today (next ~2026-12-13/14); all four metrics 读不到.
   Output: 本批词用完，请给下一批
+
+2026-11-23 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Terminal rule: all 20 approved words used (2026-09-21 → 2026-10-08), operator supplied no new
+  keyword batch → 本批词用完，请给下一批. No invented word/volume, no GSC/GA4 number fabricated,
+  no new page, no sitemap change (local app/sitemap.ts still 44 urls).
+  *** LIVE-SITE ANOMALY PERSISTS (first detected run #44 on 2026-11-20) ***
+  Re-verified today with external curl (random ?v=771929 / 025367 / 828949 / 680212 / 729936):
+    - Homepage HTTP 200: Server: cloudflare, CF-RAY, CF-Cache-Status HIT, cf-nel Report-To/Nel,
+      Last-Modified Mon, 23 Nov 2026 01:08:53 GMT; NO Server: Vercel / X-Vercel-Cache /
+      X-Matched-Path. Homepage title "AI Body Fat Calculator — Navy Tape & BMI Estimate".
+    - sitemap.xml HTTP 200 with exactly 25 <loc> urls, all lastmod 2026-11-19 (a different set
+      from the local 44-url sitemap.ts; includes photo/picture/standards-2026 pages).
+    - Full sweep of all 20 published slugs (?v=729936): 3 x 200 (body-fat-index, scale-bmi,
+      army-bmi-calculator), 2 x 301 (measure-body-fat, fat-percentage-calculator), 15 x 404
+      including the last-published /body-mass-scale.
+    - No page published today, so there is no new URL to verify as live.
+  Cause NOT established — no speculation offered. The public domain still does not match the
+  task's Vercel premise; a git push to main may no longer update the live site. Flagged.
+  No connectors installed (list_installed_plugins: none) → GSC/GA4 all 读不到.
+  28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 8 of 28 — not due
+  today (next ~2026-12-13/14); all four metrics 读不到.
+  Output: 本批词用完，请给下一批
