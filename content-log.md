@@ -366,3 +366,28 @@ No further pages will be published until the operator supplies a new batch of ke
   28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 8 of 28 — not due
   today (next ~2026-12-13/14); all four metrics 读不到.
   Output: 本批词用完，请给下一批
+
+2026-11-24 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Terminal rule: all 20 approved words used (2026-09-21 → 2026-10-08), operator supplied no new
+  keyword batch → 本批词用完，请给下一批. No invented word/volume, no GSC/GA4 number fabricated,
+  no new page, no sitemap change (local app/sitemap.ts still 44 urls).
+  *** LIVE-SITE ANOMALY PERSISTS (first detected run #44 on 2026-11-20); sitemap set changed ***
+  Re-verified today with external curl (random ?v=483920 / 726415 / 158093 / 340271):
+    - Homepage HTTP 200: Server: cloudflare, CF-RAY a5f47f6b4bd6a143-LAX, CF-Cache-Status HIT,
+      cf-nel Report-To/Nel, Last-Modified Tue 24 Nov 2026 00:57:22 GMT; NO Server: Vercel /
+      X-Vercel-Cache / X-Matched-Path. Homepage title "AI Body Fat Calculator — Navy Tape &
+      BMI Estimate".
+    - sitemap.xml HTTP 200 with 26 <loc> urls (was 25 in runs #44–#47), lastmods 2026-11-19 and
+      2026-11-23; the set differs from the local 44-url sitemap.ts and now includes
+      /media-and-mentions, which is not in the local sitemap.ts. No cause established — no
+      speculation.
+    - Full sweep of all 20 published slugs (?v=158093): 3 x 200 (body-fat-index, scale-bmi,
+      army-bmi-calculator), 2 x 301 (measure-body-fat, fat-percentage-calculator), 15 x 404
+      including the last-published /body-mass-scale.
+    - No page published today, so there is no new URL to verify as live.
+  The public domain still does not match the task's Vercel premise; a git push to main may no
+  longer update the live site. Flagged.
+  No connectors installed (list_installed_plugins: none) → GSC/GA4 all 读不到.
+  28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 9 of 28 — not due
+  today (next ~2026-12-13/14); all four metrics 读不到.
+  Output: 本批词用完，请给下一批
