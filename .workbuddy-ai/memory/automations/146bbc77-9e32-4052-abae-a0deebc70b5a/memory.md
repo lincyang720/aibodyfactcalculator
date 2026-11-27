@@ -1,5 +1,29 @@
 # Automation memory — daily page publishing (aibodyfatcalculator.com)
 
+## Run #51 (2026-11-27) — NO PUBLISH (batch exhausted); LIVE-SITE ANOMALY from #44 persists
+- All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
+  batch (repo scan found no keyword/batch file; automation prompt still lists the same 20 words).
+  Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume, no
+  GSC/GA4 number invented, no new page, no sitemap change (app/sitemap.ts still 44 urls /
+  44 page.tsx files). Standing conflict 「不许一天零篇」 vs terminal rule — terminal rule wins.
+- Re-verified #44 anomaly with external curl (random ?v=687731 / ?v=369099): homepage HTTP 200
+  `Server: cloudflare` + CF-RAY a60d3b98c8dd5041-LAX / a60d3d7b7b43f7e5-LAX + CF-Cache-Status
+  HIT + cf-nel, Last-Modified Fri 27 Nov 2026 01:06:53 GMT, NO Vercel headers, title
+  "AI Body Fat Calculator — Navy Tape & BMI Estimate"; sitemap.xml HTTP 200 (application/xml)
+  with 26 <loc> urls (lastmod 2026-11-19 x16, 2026-11-23 x9, 2026-11-26 x1 — one lastmod
+  changed vs run #50's 16+10), set differs from local 44-url sitemap.ts. FULL 20-slug sweep
+  (?v=369099): 3 x 200 (body-fat-index, scale-bmi, army-bmi-calculator), 2 x 301 (measure-body-fat,
+  fat-percentage-calculator), 15 x 404 incl. /body-mass-scale. Cause still NOT established —
+  no speculation. Do NOT claim pages are live; a git push to main may no longer update the
+  public site. No new page today → no new URL to verify as live.
+- list_installed_plugins: no connectors installed → GSC/GA4 all 读不到.
+- 28-day report: round 3 cycle 2026-11-16 → 2026-12-13 is day 12 of 28 → NOT due today.
+  Next due ~2026-12-13/14; all four metrics 读不到 unless a real GSC/GA4 connector is added.
+- Appended content-log.md 2026-11-27 no-publish + anomaly entry, workspace daily note; commit +
+  push to main. Remote in sync (aibodyfactcalculator.git, HEAD 6c0a23e before this commit).
+- **Do not publish again until the operator supplies a new keyword batch.** If asked about the site,
+  lead with the Cloudflare/26-url/15-of-20-pages-404 anomaly.
+
 ## Run #50 (2026-11-26) — NO PUBLISH (batch exhausted); LIVE-SITE ANOMALY from #44 persists
 - All 20 approved words still used (2026-09-21 → 2026-10-08); operator supplied NO new keyword
   batch. Per terminal rule: stop publishing, output 本批词用完，请给下一批. No invented word/volume,
