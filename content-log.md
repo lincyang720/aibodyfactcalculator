@@ -468,3 +468,29 @@ No further pages will be published until the operator supplies a new batch of ke
   28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 12 of 28 — not due
   today (next ~2026-12-13/14); all four metrics 读不到.
   Output: 本批词用完，请给下一批
+
+2026-11-28 | (no page published — batch exhausted, awaiting a new keyword batch) | — | — | —
+  Terminal rule: all 20 approved words used (2026-09-21 → 2026-10-08), operator supplied no new
+  keyword batch → 本批词用完，请给下一批. No invented word/volume, no GSC/GA4 number fabricated,
+  no new page, no sitemap change (local app/sitemap.ts still 44 urls; 44 page.tsx files). Repo
+  scan found no keyword/batch file. Standing conflict 「不许一天零篇」 vs terminal rule: terminal
+  rule wins, as in runs #31–#51.
+  *** LIVE-SITE ANOMALY PERSISTS (first detected run #44 on 2026-11-20) ***
+  Re-verified today with external curl (random ?v=126257):
+    - Homepage HTTP 200 (Content-Type text/html; charset=utf-8): Server: cloudflare,
+      CF-RAY a6158347af296c41-LAX, cf-nel Report-To/Nel; NO Server: Vercel / X-Vercel-Cache /
+      X-Matched-Path. Title "AI Body Fat Calculator — Navy Tape & BMI Estimate".
+    - sitemap.xml HTTP 200 with 26 <loc> urls; lastmod 2026-11-19 (16), 2026-11-23 (9),
+      2026-11-26 (1); set differs from the local 44-url sitemap.ts (includes /media-and-mentions,
+      which is not in local sitemap.ts). No cause established — no speculation.
+    - Full sweep of all 20 published slugs (?v=126257): 3 x 200 (body-fat-index, scale-bmi,
+      army-bmi-calculator), 2 x 301 (measure-body-fat, fat-percentage-calculator), 15 x 404
+      including the last-published /body-mass-scale.
+    - No page published today, so there is no new URL to verify as live. Do NOT claim the
+      published pages are live.
+  The public domain still does not match the task's Vercel premise; a git push to main may no
+  longer update the live site. Flagged.
+  No connectors installed (list_installed_plugins: none) → GSC/GA4 all 读不到.
+  28-day GSC/GA4 report: round 3 cycle (2026-11-16 → 2026-12-13) is day 13 of 28 — not due
+  today (next ~2026-12-13/14); all four metrics 读不到.
+  Output: 本批词用完，请给下一批
